@@ -11,6 +11,10 @@
         "vite": "^5.0"
     },
     "dependencies": {
-        "@vitejs/plugin-vue": "^5.0.4"
+        "@vitejs/plugin-vue": "^5.0.4",
+        "primeicons": "^7.0.0",
+        "primevue": "^3.52.0",
+        "vue": "^3.4.27",
+        "vue-loader": "^17.4.2"
     }
 }
