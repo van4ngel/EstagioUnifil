@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<meta name="csrf-token" content="{{ csrf_token() }}">
-
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ًAdicionar Aluno</title>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <title>ًPagina Inicial</title>
+        @vite(['resources/css/app.css', 'resources/js/pagina_inicial.js'])
 
     </head>
     <body>
-        <div id="app">
-            <app-example></app-example>
+        <div id="pagina_inicial">
+            <app-example2></app-example2>
         </div>
     </body>
 </html>

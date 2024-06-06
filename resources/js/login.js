@@ -1,9 +1,8 @@
 import { createApp } from 'vue';
-import App from './App.vue';
+import Login from './Login.vue';
 
 
 //PrimeVue imports
-
 import PrimeVue from 'primevue/config';
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
@@ -19,17 +18,17 @@ import 'primevue/resources/themes/aura-dark-blue/theme.css'
 import 'primeicons/primeicons.css'
 
  
-const app = createApp({})
-app.use(PrimeVue)
+const login = createApp(Login)
+login.use(PrimeVue)
 // PrimeVue load components
-app.component('Button', Button)
-app.component('InputText', InputText)
-app.component('Card', Card)
-app.component('toolbar', Toolbar)
-app.component('panel', Panel)
-app.component('checkbox', Checkbox)
-app.component('dropdown',Dropdown )
-app.component('Image', Image)
-app.component('app-example', App)
-app.mount('#app')
+login.component('Button', Button)
+login.component('InputText', InputText)
+login.component('Card', Card)
+login.component('toolbar', Toolbar)
+login.component('panel', Panel)
+login.component('checkbox', Checkbox)
+login.component('dropdown',Dropdown )
+login.component('Image', Image)
+login.component('app-example3', Login)
+login.mount('#login')
 

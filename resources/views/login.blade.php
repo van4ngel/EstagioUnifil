@@ -5,13 +5,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ًAdicionar Aluno</title>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <title>ًLogin TCControle</title>
+        @vite(['resources/css/app.css', 'resources/js/login.js'])
 
     </head>
     <body>
-        <div id="app">
-            <app-example></app-example>
+        <div id="login">
+            <app-example3></app-example3>
         </div>
     </body>
 </html>
