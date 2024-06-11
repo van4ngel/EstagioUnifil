@@ -98,6 +98,9 @@
 </style>
 
 <template>
+
+
+  
   <div class="add-student">
     <div class="header">
       <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
@@ -134,6 +137,8 @@
           </div>
           
         </div>
+
+        
           <a href="/" id="sair" >Sair</a>
       </div>
       

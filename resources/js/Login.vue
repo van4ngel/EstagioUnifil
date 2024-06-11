@@ -94,6 +94,7 @@ select {
 }
 
 
+
 </style>
 
 <template>
@@ -115,7 +116,7 @@ select {
           <input id="senha" v-model="senha" type="password" />
         </div>
         <div class="p-field">
-          <a href="#" class="p-button p-button-success" @click="login($event)">Entrar</a>
+          <a href="#" class="p-button p-button-success" ">Entrar</a>
         </div>
       </div>
     </div>
@@ -123,52 +124,6 @@ select {
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      matricula: '',
-      senha: ''
-    };
-  },
-  methods: {
-    login(event) {
-      event.preventDefault(); 
-
-      const matricula = this.matricula;
-      const senha = this.senha;
-   
-      console.log('Matrícula:', matricula);
-  console.log('Senha:', senha);
-
-
-  fetch('http://localhost:8000/login', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-  },
-  body: JSON.stringify({ matricula, senha })
-})
-
-.then(response => {
-  if (!response.ok) {
-    throw new Error('Erro na resposta do servidor');
-  }
-  return response.json();
-})
-.then(data => {
-  if (data.success) {
-    this.$router.push('/Pagina_inicial');
-  } else {
-    alert('Credenciais inválidas!');
-  }
-})
-
-
-    }
-  }
-};
 
 </script>
 

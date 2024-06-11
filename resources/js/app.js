@@ -1,35 +1,39 @@
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+
+import './bootstrap';
 import { createApp } from 'vue';
-import App from './App.vue';
 
+/**
+ * Next, we will create a fresh Vue application instance. You may then begin
+ * registering components with the application instance so they are ready
+ * to use in your application's views. An example is included for you.
+ */
 
-//PrimeVue imports
+const app = createApp({});
 
-import PrimeVue from 'primevue/config';
-import Button from 'primevue/button';
-import InputText from 'primevue/inputtext';
-import Card from 'primevue/card';
-import Toolbar from 'primevue/toolbar';
-import Panel from 'primevue/panel';
-import Checkbox from 'primevue/checkbox';
-import Dropdown from 'primevue/dropdown';
+import ExampleComponent from './components/ExampleComponent.vue';
+app.component('example-component', ExampleComponent);
 
-import Image from 'primevue/image';
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
 
-import 'primevue/resources/themes/aura-dark-blue/theme.css'
-import 'primeicons/primeicons.css'
+// Object.entries(import.meta.glob('./**/*.vue', { eager: true })).forEach(([path, definition]) => {
+//     app.component(path.split('/').pop().replace(/\.\w+$/, ''), definition.default);
+// });
 
- 
-const app = createApp({})
-app.use(PrimeVue)
-// PrimeVue load components
-app.component('Button', Button)
-app.component('InputText', InputText)
-app.component('Card', Card)
-app.component('toolbar', Toolbar)
-app.component('panel', Panel)
-app.component('checkbox', Checkbox)
-app.component('dropdown',Dropdown )
-app.component('Image', Image)
-app.component('app-example', App)
-app.mount('#app')
+/**
+ * Finally, we will attach the application instance to a HTML element with
+ * an "id" attribute of "app". This element is included with the "auth"
+ * scaffolding. Otherwise, you will need to add an element yourself.
+ */
 
+app.mount('#app');

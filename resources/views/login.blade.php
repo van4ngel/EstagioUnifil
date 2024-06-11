@@ -11,7 +11,7 @@
     </head>
     <body>
         <div id="login">
-            <app-example3></app-example3>
+            <app-example3> </app-example3>
         </div>
     </body>
 </html>

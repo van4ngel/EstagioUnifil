@@ -34,3 +34,4 @@ pagina_inicial.component('app-example2', PaginaInicial);
 
 pagina_inicial.mount('#pagina_inicial'); 
 
+

@@ -9,7 +9,19 @@
     </head>
     <body>
         <div id="pagina_inicial">
-            <app-example2></app-example2>
+            <app-example2>
+
+  
+            
+            </app-example2>
         </div>
+
+        @extends('layouts.app')
+
+@section('content')
+
+@endsection
     </body>
 </html>
+
+
