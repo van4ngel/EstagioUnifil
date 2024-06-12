@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<body>
 <div id="login">
     <div class="box">
         <div class="header">
@@ -11,6 +11,7 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
+                
                 <div class="p-field">
                     <h2 style="text-align: center;">Preencha as informações abaixo para acessar o portal:</h2>
                     <label for="email">Matrícula:</label>

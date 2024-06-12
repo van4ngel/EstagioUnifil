@@ -110,7 +110,7 @@
       <div class="table">
         <div class="row">
           <div class="cell">
-            <a href="/App" class="p-button p-button-success" @click="addStudent">Adicionar Aluno</a>
+            <a href="/register" class="p-button p-button-success" @click="addStudent">Adicionar Aluno</a>
           </div>
           <div class="cell">
             <a href="/App" class="p-button p-button-secondary">Opção 2</a>
@@ -139,10 +139,12 @@
         </div>
 
         
-          <a href="/" id="sair" >Sair</a>
+  
       </div>
       
     </div>
     
   </div>
 </template>
+
+

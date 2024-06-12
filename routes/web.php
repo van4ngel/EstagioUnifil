@@ -1,20 +1,24 @@
 <?php
-Auth::routes();
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 
-Route::get('/', function () {
- return view('login');
+
+
+
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+
+
+
+Route::get('/Register', function () {
+    return view('register');
 });
 
-Route::get('/App', function () {
-    return view('app2');
-});
+Route::get('/home', [HomeController::class, 'index'])->name('pagina_inicial');
 
-Route::get('/Pagina_inicial', function () {
-    return view('pagina_inicial');
-});
+// Rotas de autenticação
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Auth::routes();
