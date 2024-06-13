@@ -1,106 +1,105 @@
 <style scoped>
-.header {
-  text-align: center;
-  margin-top: 90px;
-}
+  .header {
+    text-align: center;
+    margin-top: 90px;
+  }
 
-.header img {
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: -100px;
- 
-}
+  .header img {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: -100px;
+  }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 98vw;
-  height: 80vh;
-}
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 98vw;
+    height: 80vh;
+  }
 
-.table {
-  display: table;
-  width: auto;
-  border-collapse: collapse;
-  margin: 0 auto;
-}
+  .table {
+    display: table;
+    width: auto;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
 
-.row {
-  display: table-row;
-}
+  .row {
+    display: table-row;
+  }
 
-.cell {
-  display: table-cell;
-  padding: 10px;
-  text-align: center;
-  vertical-align: middle;
-}
+  .cell {
+    display: table-cell;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+  }
 
-.p-button {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  width: 150px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin: 10px;
-  
-  margin-bottom: 40px;
-}
+  .p-button {
+    padding: 15px; /* Ajustado para maior área de clique */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 200px; /* Largura fixa para todos os botões */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  }
 
-.p-button-success {
-  background-color: rgba(255,146,72,255);
-  color: black;
-}
+  .p-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
 
-.p-button-success:hover {
-  background-color: #45a049;
-}
+  .p-button-success {
+    background-color: rgba(255, 146, 72, 255);
+    color: black;
+  }
 
-.p-button-secondary {
-  background-color: rgba(255, 146, 72, 255);
-  color: black;
-}
+  .p-button-success:hover {
+    background-color: #45a049;
+    color: white;
+  }
 
-.p-button-secondary:hover {
-  background-color: #45a049;
-}
+  .p-button-secondary {
+    background-color: rgba(255, 146, 72, 255);
+    color: black;
+  }
 
-.p-button-danger {
-  background-color: rgba(255, 146, 72, 255);
-  color: black;
-}
+  .p-button-secondary:hover {
+    background-color: #45a049;
+    color: white;
+  }
 
-.p-button-danger:hover {
-  background-color: #45a049;
-}
+  .p-button-danger {
+    background-color: rgba(255, 146, 72, 255);
+    color: black;
+  }
 
-.p-button-warning {
-  background-color: rgba(255, 146, 72, 255);
-  color: black;
-}
+  .p-button-danger:hover {
+    background-color: #45a049;
+    color: white;
+  }
 
-.p-button-warning:hover {
-  background-color: #45a049;
-}
- #sair{
-  padding: 190%;
-  font-size: 16px;
-  cursor: pointer;
-  align-items: center
+  .p-button-warning {
+    background-color: rgba(255, 146, 72, 255);
+    color: black;
+  }
 
- }
+  .p-button-warning:hover {
+    background-color: #45a049;
+    color: white;
+  }
 </style>
 
 <template>
-
-
-  
   <div class="add-student">
     <div class="header">
       <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
@@ -110,41 +109,33 @@
       <div class="table">
         <div class="row">
           <div class="cell">
-            <a href="/register" class="p-button p-button-success" @click="addStudent">Adicionar Aluno</a>
+            <a href="/register" class="p-button p-button-success" >Adicionar Aluno</a>
           </div>
           <div class="cell">
-            <a href="/App" class="p-button p-button-secondary">Opção 2</a>
+            <a href="/App" class="p-button p-button-secondary">Adicionar Orientador</a>
           </div>
           <div class="cell">
-            <a href="/App" class="p-button p-button-danger">Opção 3</a>
+            <a href="/App" class="p-button p-button-danger">Atribuir tarefas</a>
           </div>
           <div class="cell">
-            <a href="/App" class="p-button p-button-warning">Opção 4</a>
+            <a href="/App" class="p-button p-button-warning">Notas</a>
           </div>
         </div>
         <div class="row">
           <div class="cell">
-            <a href="/App" class="p-button p-button-success">Opção 5</a>
+            <a href="/App" class="p-button p-button-success">Bancas</a>
           </div>
           <div class="cell">
-            <a href="/App" class="p-button p-button-secondary">Opção 6</a>
+            <a href="/App" class="p-button p-button-secondary">Registro de orientações</a>
           </div>
           <div class="cell">
-            <a href="/App" class="p-button p-button-danger">Opção 7</a>
+            <a href="/App" class="p-button p-button-danger">Alunos x Orientadores</a>
           </div>
           <div class="cell">
-            <a href="/App" class="p-button p-button-warning">Opção 8</a>
+            <a href="/App" class="p-button p-button-warning">Notas Banca</a>
           </div>
-          
         </div>
-
-        
-  
       </div>
-      
     </div>
-    
   </div>
 </template>
-
-

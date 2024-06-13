@@ -2,6 +2,9 @@
 
 @section('content')
 <body>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
 <div id="login">
     <div class="box">
         <div class="header">
@@ -14,7 +17,7 @@
                 
                 <div class="p-field">
                     <h2 style="text-align: center;">Preencha as informações abaixo para acessar o portal:</h2>
-                    <label for="email">Matrícula:</label>
+                    <label for="email">Email:</label>
                     <br>
                     <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus>
                     @error('email')
@@ -118,6 +121,7 @@ select {
     text-align: center;
     background-color: rgba(255, 146, 72, 255);
     color: black;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
 .p-button:hover {

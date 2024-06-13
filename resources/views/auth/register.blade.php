@@ -2,6 +2,9 @@
 
 @section('content')
 <div id="register">
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registrar</title>
     <div class="box">
         <div class="header">
             <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
@@ -110,7 +113,6 @@
         }
     }
 
-
     input[type="text"],
     select {
         width: 100%;
@@ -122,7 +124,7 @@
 
     .p-button,
     .custom-btn {
-        padding: 8px;
+        padding: 7px;
         border: none;
         border-radius: 10px;
         font-size: 18px;
@@ -136,11 +138,15 @@
         background-color: rgba(255, 146, 72, 255);
         color: black;
         text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
     }
 
     .p-button:hover,
     .custom-btn:hover {
+        transform: translateY(-2px);
         background-color: rgba(255, 146, 72, 255);
         color: white;
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     }
 </style>
