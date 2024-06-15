@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="register">
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Registrar</title>
     <div class="box">
@@ -59,19 +59,20 @@
                 </div>
 
                 <div class="p-field">
-    <button type="submit" class="p-button p-button-success custom-btn">
-        Registrar
-    </button>
-    <a href="{{ route('pagina_inicial') }}" class="p-button p-button-success custom-btn">
-        Voltar
-    </a>
-</div>
-
+                    <button type="submit" class="p-button p-button-success custom-btn">
+                        Registrar
+                    </button>
+                    <a href="{{ route('pagina_inicial') }}" class="p-button p-button-success custom-btn">
+                        Voltar
+                    </a>
+                </div>
             </form>
         </div>
     </div>
 </div>
 @endsection
+
+
 
 <style scoped>
     #register {

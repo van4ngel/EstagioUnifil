@@ -52,7 +52,7 @@ class RegisterController extends Controller
             'nome' => ['required', 'string', 'max:255'],
             'matricula' => ['required', 'string', 'max:255', 'unique:alunos'],
             'orientador' => ['required', 'string', 'max:255'],
-            'estagio_do_tcc' => ['required', 'string', 'max:255'],
+            'estagio_do_tcc' => ['required', 'in:1,2,3,4'],
         ]);
     }
 
