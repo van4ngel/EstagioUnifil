@@ -109,13 +109,13 @@
       <div class="table">
         <div class="row">
           <div class="cell">
-            <a href="/register" class="p-button p-button-success" >Adicionar Aluno</a>
+            <a href="/alunos" class="p-button p-button-success" >Gerenciar Aluno</a>
           </div>
           <div class="cell">
-            <a href="/App" class="p-button p-button-secondary">Adicionar Orientador</a>
+            <a href="/orientador" class="p-button p-button-secondary">Gerenciar Orientador</a>
           </div>
           <div class="cell">
-            <a href="/App" class="p-button p-button-danger">Atribuir tarefas</a>
+            <a href="/tarefas" class="p-button p-button-danger">Alunos x Orientadores</a>
           </div>
           <div class="cell">
             <a href="/App" class="p-button p-button-warning">Notas</a>
@@ -129,7 +129,7 @@
             <a href="/App" class="p-button p-button-secondary">Registro de orientações</a>
           </div>
           <div class="cell">
-            <a href="/App" class="p-button p-button-danger">Alunos x Orientadores</a>
+            <a href="/App" class="p-button p-button-danger">Gerenciar Tarefas </a>
           </div>
           <div class="cell">
             <a href="/App" class="p-button p-button-warning">Notas Banca</a>

@@ -17,7 +17,7 @@
                 
                 <div class="p-field">
                     <h2 style="text-align: center;">Preencha as informações abaixo para acessar o portal:</h2>
-                    <label for="email">Email:</label>
+                    <label for="email">Matricula:</label>
                     <br>
                     <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus>
                     @error('email')
@@ -84,6 +84,7 @@
 
 label {
     margin-bottom: 5px;
+    font-size: 18px; /* Aumenta o tamanho da fonte dos labels */
 }
 
 @media (max-width: 768px) {

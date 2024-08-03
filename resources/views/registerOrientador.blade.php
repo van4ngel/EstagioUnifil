@@ -4,18 +4,18 @@
 <div id="register">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registrar</title>
+    <title>Registrar Orientador</title>
     <div class="box">
         <div class="header">
             <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
         </div>
         <div class="toldo">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('registerOrientador') }}">
                 @csrf
 
                 <div class="p-field">
-                    <h2 style="text-align: center;">Preencha as informações abaixo para registrar um novo aluno:</h2>
-                    <label for="nome">Nome completo do aluno:</label>
+                    <h2 style="text-align: center;">Preencha as informações abaixo para registrar um novo Orientador:</h2>
+                    <label for="nome">Nome completo do Orientador:</label>
                     <br>
                     <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autofocus>
                     @error('nome')
@@ -28,30 +28,8 @@
                 <div class="p-field">
                     <label for="matricula">Matrícula:</label>
                     <br>
-                    <input id="matricula" type="text" class="form-control @error('matricula') is-invalid @enderror" name="matricula" value="{{ old('matricula') }}" required autocomplete="matricula">
+                    <input id="matricula" type="text" class="form-control @error('matricula') is-invalid @enderror" name="matricula" value="{{ old('matricula') }}" required>
                     @error('matricula')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="p-field">
-                    <label for="orientador">Orientador responsável:</label>
-                    <br>
-                    <input id="orientador" type="text" class="form-control @error('orientador') is-invalid @enderror" name="orientador" value="{{ old('orientador') }}" required autocomplete="orientador">
-                    @error('orientador')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="p-field">
-                    <label for="estagio_do_tcc">Estágio do TCC que o aluno se encontra:</label>
-                    <br>
-                    <input id="estagio_do_tcc" type="text" class="form-control @error('estagio_do_tcc') is-invalid @enderror" name="estagio_do_tcc" value="{{ old('estagio_do_tcc') }}" required autocomplete="estagio_do_tcc">
-                    @error('estagio_do_tcc')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -105,8 +83,10 @@
     }
 
     label {
-        margin-bottom: 5px;
-    }
+    margin-bottom: 15px;
+    font-size: 18px; /* Aumenta o tamanho da fonte dos labels */
+}
+
 
     @media (max-width: 768px) {
         .box {
