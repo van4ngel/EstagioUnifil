@@ -22,5 +22,11 @@ class Aluno extends Model
     {
         return $this->belongsTo(Orientador::class);
     }
+
+    public function bancas()
+{
+    return $this->hasMany(Banca::class);
+}
+
 }
 

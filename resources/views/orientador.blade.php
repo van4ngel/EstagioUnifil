@@ -10,58 +10,55 @@
             <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
         </div>
         <div class="toldo">
-            <form method="POST" action="{{ route('orientador') }}">
-                @csrf
-
-                <div class="p-field">
-                    <h2 style="text-align: center;">Orientadores cadastrados:</h2>
-                    
-        
-
-                <table class="table">
-                    <thead>
+            <h2 style="text-align: center;">Orientadores cadastrados:</h2>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome orientador:</th>
+                        <th>Matrícula:</th>
+                        <th>Alunos:</th>
+                        <th>Data de Criação:</th>
+                        <th>Ações:</th> <!-- Nova coluna para ações -->
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($orientadores as $orientador)
                         <tr>
-                            <th>Nome</th>
-                            <th>Matrícula</th>
-                            <th>Alunos</th>
-                           
-                            <th>Data de Criação</th>
+                            <td>{{ $orientador->nome }}</td>
+                            <td>{{ $orientador->matricula }}</td>
+                            <td>
+                                <div class="aluno-lista">
+                                    @if($orientador->alunos->isEmpty())
+                                        <div class="aluno-item">Nenhum aluno atribuído</div>
+                                    @else
+                                        @foreach($orientador->alunos as $aluno)
+                                            <div class="aluno-item">{{ $aluno->nome }} (Matrícula: {{ $aluno->matricula }})</div>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </td>
+                            <td>{{ $orientador->created_at }}</td>
+                            <td>
+                                <!-- Botão para modificar o orientador -->
+                                <a href="{{ route('orientadores.edit', $orientador->id) }}" class="btn btn-warning">
+                                    Modificar
+                                </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <<tbody>
-    @foreach($orientadores as $orientador)
-        <tr>
-            <td>{{ $orientador->nome }}</td>
-            <td>{{ $orientador->matricula }}</td>
-            <td>
-                <div class="aluno-lista">
-                    @if($orientador->alunos->isEmpty())
-                        <div class="aluno-item">Nenhum aluno atribuído</div>
-                    @else
-                        @foreach($orientador->alunos as $aluno)
-                            <div class="aluno-item">{{ $aluno->nome }} (Matrícula: {{ $aluno->matricula }})</div>
-                        @endforeach
-                    @endif
-                </div>
-            </td>
-            <td>{{ $orientador->created_at }}</td>
-        </tr>
-    @endforeach
-</tbody>
+                    @endforeach
+                </tbody>
+            </table>
 
-                </table>
+            <div class="actions">
+                <a href="{{ route('registerOrientador') }}" class="btn btn-primary">
+                    Adicionar Orientador
+                </a>
 
-                
-                <div class="actions">
-                    <a href="{{ route('registerOrientador') }}" class="btn btn-primary">
-                        Adicionar Orientador
-                    </a>
-
-                    <a href="{{ route('pagina_inicial') }}" class="btn btn-secondary">
-                        Voltar
-                    </a>
-                </div>
-            </form>
+                <a href="{{ route('pagina_inicial') }}" class="btn btn-secondary">
+                    Voltar
+                </a>
+            </div>
         </div>
     </div>
 </div>

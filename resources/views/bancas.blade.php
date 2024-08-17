@@ -4,7 +4,7 @@
 <div id="register">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gerenciar Alunos</title>
+    <title>Gerenciar Bancas</title>
     <div class="box">
         <div class="header">
             <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">

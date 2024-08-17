@@ -17,11 +17,12 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Matrícula</th>
-                            <th>Orientador</th>
-                            <th>Estágio do TCC</th>
-                            <th>Data de Criação</th>
+                            <th>Nome Aluno:</th>
+                            <th>Matrícula:</th>
+                            <th>Orientador responsavel:</th>
+                            <th>Estágio do TCC:</th>
+                            <th>Data de Criação:</th>
+                            <th>Ações:</th> <!-- Coluna para ações -->
                         </tr>
                     </thead>
                     <tbody>
@@ -32,6 +33,12 @@
                                 <td>{{ $aluno->orientador ? $aluno->orientador->nome : 'Não atribuído' }}</td>
                                 <td>{{ $aluno->estagio_do_tcc }}</td>
                                 <td>{{ $aluno->created_at }}</td>
+                                <td>
+                                    <!-- Botão para modificar o aluno -->
+                                    <a href="{{ route('alunos.edit', $aluno->id) }}" class="btn btn-warning">
+                                        Modificar
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -51,6 +58,7 @@
     </div>
 </div>
 @endsection
+
 
 <style scoped>
     #register {

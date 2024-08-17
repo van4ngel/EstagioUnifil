@@ -42,12 +42,19 @@ Route::get('/alunos', [AlunosController::class, 'showRegisterForm'])
 
 Route::post('/alunos', [AlunosController::class, 'alunos'])->name('alunos');
 
+Route::get('/alunos/{id}/edit', [RegisterController::class, 'edit'])->name('alunos.edit');
+
+Route::put('/alunos/{id}', [RegisterController::class, 'update'])->name('alunos.update');
+
 //Rota de orientadores
 Route::get('/orientador', [OrientadoresController::class, 'showRegisterForm'])
     ->name('orientadorForm')
    ->middleware('auth');
 
 Route::post('/orientador', [OrientadoresController::class, 'orientador'])->name('orientador');
+
+Route::get('/orientadores/{id}/edit', [OriController::class, 'edit'])->name('orientadores.edit');
+Route::put('/orientadores/{id}', [OriController::class, 'update'])->name('orientadores.update');
 
 //Rota de bancas
 Route::get('/bancas', [BancasController ::class, 'showRegisterForm'])
@@ -62,3 +69,4 @@ Route::get('/registerbanca', [RegisterBancaController ::class, 'showRegisterForm
    ->middleware('auth');
 
 Route::post('/registerbanca', [RegisterBancaController ::class, 'registerBanca'])->name('registerBanca');
+

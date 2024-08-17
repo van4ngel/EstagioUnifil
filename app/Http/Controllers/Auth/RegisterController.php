@@ -47,4 +47,33 @@ class RegisterController extends Controller{
 
         return redirect()->route('alunos')->with('success', 'Aluno registrado com sucesso!');
     }
+    public function edit($id)
+    {
+        $aluno = Aluno::findOrFail($id);
+        $orientadores = Orientador::all(); // Certifique-se de que este modelo está correto
+        return view('alunos.edit', compact('aluno', 'orientadores'));
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nome' => 'required|string|max:255',
+            'matricula' => 'required|string|max:255',
+            'orientador_id' => 'nullable|exists:orientadores,id',
+            'estagio_do_tcc' => 'required|string|max:255',
+        ]);
+    
+        $aluno = Aluno::findOrFail($id);
+        $aluno->update([
+            'nome' => $request->input('nome'),
+            'matricula' => $request->input('matricula'),
+            'orientador_id' => $request->input('orientador_id'),
+            'estagio_do_tcc' => $request->input('estagio_do_tcc'),
+        ]);
+    
+        return redirect()->route('alunos')->with('success', 'Aluno atualizado com sucesso!');
+    }
+    
+
+
 }
