@@ -12,14 +12,14 @@
             <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
         </div>
         <div class="toldo">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('registerBanca') }}">
                 @csrf
 
                 <div class="p-field">
-                    <h2 style="text-align: center;">Preencha as informações abaixo para registrar um novo aluno:</h2>
-                    <label for="nome">Nome completo do aluno:</label>
+                    <h2 style="text-align: center;">Preencha as informações abaixo para registrar uma nova Banca:</h2>
+                    <label for="nome">Dia da banca:</label>
                     <br>
-                    <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autofocus>
+                    <input id="nome" type="date" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autofocus>
                     @error('nome')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -37,43 +37,12 @@
                     </span>
                     @enderror
                 </div>
-                <div class="p-field">
-    <label for="orientador_id">Orientador responsável:</label>
-    <select id="orientador_id" class="form-control @error('orientador_id') is-invalid @enderror" name="orientador_id" required>
-        <option value="">Selecione um orientador</option>
-        @foreach($orientadores as $orientador)
-            <option value="{{ $orientador->id }}">{{ $orientador->nome }}</option>
-        @endforeach
-    </select>
-    @error('orientador_id')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
-                <div class="p-field">
-    <label for="estagio_do_tcc">Estágio do TCC que o aluno se encontra:</label>
-    <div class="select-container">
-        <select id="estagio_do_tcc" class="form-control @error('estagio_do_tcc') is-invalid @enderror" name="estagio_do_tcc" required autocomplete="estagio_do_tcc">
-            <option value="">Selecione uma opção</option>
-            <option value="1">Estágio 1</option>
-            <option value="2">Estágio 2</option>
-            <option value="3">Estágio 3</option>
-            <option value="4">Estágio 4</option>
-        </select>
-        <i class="fas fa-chevron-down select-icon"></i>
-    </div>
-    @error('estagio_do_tcc')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
+                
                 <div class="p-field">
                     <button type="submit" class="p-button p-button-success custom-btn">
                         Registrar
                     </button>
-                    <a href="{{ route('alunos') }}" class="p-button p-button-success custom-btn">
+                    <a href="{{ route('bancas') }}" class="p-button p-button-success custom-btn">
                         Voltar
                     </a>
                 </div>

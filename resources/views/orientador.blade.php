@@ -4,7 +4,7 @@
 <div id="register">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registrar</title>
+    <title>Gerenciar Orientador</title>
     <div class="box">
         <div class="header">
             <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
@@ -16,15 +16,49 @@
                 <div class="p-field">
                     <h2 style="text-align: center;">Orientadores cadastrados:</h2>
                     
+        
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Matrícula</th>
+                            <th>Alunos</th>
+                           
+                            <th>Data de Criação</th>
+                        </tr>
+                    </thead>
+                    <<tbody>
+    @foreach($orientadores as $orientador)
+        <tr>
+            <td>{{ $orientador->nome }}</td>
+            <td>{{ $orientador->matricula }}</td>
+            <td>
+                <div class="aluno-lista">
+                    @if($orientador->alunos->isEmpty())
+                        <div class="aluno-item">Nenhum aluno atribuído</div>
+                    @else
+                        @foreach($orientador->alunos as $aluno)
+                            <div class="aluno-item">{{ $aluno->nome }} (Matrícula: {{ $aluno->matricula }})</div>
+                        @endforeach
+                    @endif
+                </div>
+            </td>
+            <td>{{ $orientador->created_at }}</td>
+        </tr>
+    @endforeach
+</tbody>
+
+                </table>
 
                 
-                    <a href="{{ route('registerOrientador') }}" class="p-button p-button-success custom-btn">
+                <div class="actions">
+                    <a href="{{ route('registerOrientador') }}" class="btn btn-primary">
                         Adicionar Orientador
                     </a>
 
-                    <a href="{{ route('pagina_inicial') }}" class="p-button p-button-success custom-btn">
-                        voltar
-                    </a>
+                    <a href="{{ route('pagina_inicial') }}" class="btn btn-secondary">
+                        Voltar
                     </a>
                 </div>
             </form>
@@ -33,24 +67,50 @@
 </div>
 @endsection
 
-
 <style scoped>
+
+.aluno-lista {
+    display: flex;
+    flex-direction: column;
+}
+
+.aluno-item {
+    margin-bottom: 5px; 
+}
+
     #register {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100vw;
         height: 100vh;
+        background-color: #f5f5f5;
+    }
+
+    .box {
+        width: 300%;
+        max-width: 1300px;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .header {
         text-align: center;
-        margin-bottom: 70px;
+        margin-bottom: 20px;
     }
 
     .header img {
         width: 100%;
-        max-width: 400px;
+        max-width: 300px;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
     }
 
     .toldo {
@@ -59,57 +119,63 @@
         gap: 20px;
     }
 
-    .p-field {
-        display: flex;
-        flex-direction: column;
-    }
-
-    label {
-    margin-bottom: 15px;
-    font-size: 18px; /* Aumenta o tamanho da fonte dos labels */
-}
-
-
-    @media (max-width: 768px) {
-        .box {
-            width: 90%;
-        }
-    }
-
-    input[type="text"],
-    select {
+    .table {
         width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        margin-bottom: 5px;
-        border-radius: 10px;
+        border-collapse: collapse;
+        margin-bottom: 20px;
     }
 
-    .p-button,
-    .custom-btn {
-        padding: 7px;
+    .table th, .table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 20px 20px;
         border: none;
-        border-radius: 10px;
-        font-size: 18px;
-        cursor: pointer;
-        margin-top: 30px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        border-radius: 5px;
+        font-size: 3rem;
         text-align: center;
-        background-color: rgba(255, 146, 72, 255);
-        color: black;
         text-decoration: none;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+       
     }
 
-    .p-button:hover,
-    .custom-btn:hover {
-        transform: translateY(-2px);
+    .btn-primary {
         background-color: rgba(255, 146, 72, 255);
-        color: white;
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        background-color: rgba(255, 146, 72, 255);
+        transform: scale(1.05);
+    }
+
+    .btn-secondary {
+        background-color: #4b9cd3;
+        color: #fff;
+    }
+
+    .btn-secondary:hover {
+        background-color: #3a7fbf;
+        transform: scale(1.05);
     }
 </style>
+

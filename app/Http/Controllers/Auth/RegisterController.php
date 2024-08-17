@@ -1,71 +1,50 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Aluno;
+use App\Models\Orientador;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
-class RegisterController extends Controller
-{
-    
-
+class RegisterController extends Controller{
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
     protected $redirectTo = '/register';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
-       
+        
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+    public function showRegisterForm()
+    {
+        $orientadores = Orientador::all(); // Obtém todos os orientadores
+        return view('register', compact('orientadores')); // Passa a lista de orientadores para a visão
+    }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'nome' => ['required', 'string', 'max:255'],
             'matricula' => ['required', 'string', 'max:255', 'unique:alunos'],
-            'orientador' => ['required', 'string', 'max:255'],
+            'orientador_id' => ['required', 'exists:orientadores,id'], // Valida que o orientador existe
             'estagio_do_tcc' => ['required', 'in:1,2,3,4'],
         ]);
     }
 
-    /**
-     * Create a new Aluno instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\Aluno
-     */
-    protected function create(array $data)
+    protected function register(Request $request)
     {
-        return Aluno::create([
-            'nome' => $data['nome'],
-            'matricula' => $data['matricula'],
-            'orientador' => $data['orientador'],
-            'estagio_do_tcc' => $data['estagio_do_tcc'],
-        ]);
-    }
-   
-    public function showRegisterForm()
-    {
-        return view('register');
-    }
+        $validatedData = $this->validator($request->all())->validate();
 
+        Aluno::create([
+            'nome' => $validatedData['nome'],
+            'matricula' => $validatedData['matricula'],
+            'orientador_id' => $validatedData['orientador_id'],
+            'estagio_do_tcc' => $validatedData['estagio_do_tcc'],
+        ]);
+
+        return redirect()->route('alunos')->with('success', 'Aluno registrado com sucesso!');
+    }
 }

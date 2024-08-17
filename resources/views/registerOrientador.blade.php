@@ -40,7 +40,7 @@
                     <button type="submit" class="p-button p-button-success custom-btn">
                         Registrar
                     </button>
-                    <a href="{{ route('pagina_inicial') }}" class="p-button p-button-success custom-btn">
+                    <a href="{{ route('orientador') }}" class="p-button p-button-success custom-btn">
                         Voltar
                     </a>
                 </div>

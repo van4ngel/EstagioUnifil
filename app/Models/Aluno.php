@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Models;
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,33 +11,16 @@ class Aluno extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'nome',
         'matricula',
-        'orientador',
+        'orientador_id',
         'estagio_do_tcc',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        // Adicione campos aqui se houver algum que você queira ocultar, como senhas
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        // Adicione castings aqui se necessário
-    ];
+    public function orientador()
+    {
+        return $this->belongsTo(Orientador::class);
+    }
 }
+

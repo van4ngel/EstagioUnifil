@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BancasController;
 use App\Http\Controllers\Auth\AlunosController;
 use App\Http\Controllers\OrientadoresController;
+use App\Http\Controllers\RegisterBancaController;
 Auth::routes();
 
 // Rota de login
@@ -32,12 +33,7 @@ Route::get('/registerOrientador', [OriController::class, 'showRegisterForm'])
 
 Route::post('/registerOrientador', [OriController::class, 'registerOrientador'])->name('registerOrientador');
 
-// Rota de tarefas
-Route::get('/tarefas', [TarefasController::class, 'showRegisterForm'])
-    ->name('tarefasForm')
-    ->middleware('auth');
 
-Route::post('/tarefas', [TarefasController::class, 'tarefas'])->name('tarefas');
 
 // Rota de Alunos
 Route::get('/alunos', [AlunosController::class, 'showRegisterForm'])
@@ -46,9 +42,23 @@ Route::get('/alunos', [AlunosController::class, 'showRegisterForm'])
 
 Route::post('/alunos', [AlunosController::class, 'alunos'])->name('alunos');
 
-// Rota de orientadores
+//Rota de orientadores
 Route::get('/orientador', [OrientadoresController::class, 'showRegisterForm'])
     ->name('orientadorForm')
-    ->middleware('auth');
+   ->middleware('auth');
 
 Route::post('/orientador', [OrientadoresController::class, 'orientador'])->name('orientador');
+
+//Rota de bancas
+Route::get('/bancas', [BancasController ::class, 'showRegisterForm'])
+    ->name('bancasForm')
+   ->middleware('auth');
+
+Route::post('/bancas', [BancasController ::class, 'bancas'])->name('bancas');
+
+//Rota de bancas
+Route::get('/registerbanca', [RegisterBancaController ::class, 'showRegisterForm'])
+    ->name('bancasForm')
+   ->middleware('auth');
+
+Route::post('/registerbanca', [RegisterBancaController ::class, 'registerBanca'])->name('registerBanca');

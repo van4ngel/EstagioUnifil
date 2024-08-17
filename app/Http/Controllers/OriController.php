@@ -1,44 +1,44 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\Orientador;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Orientador;
 
-class OriController extends Controller
-{
-    /**
-     * Exibe o formulário para registrar um novo orientador.
-     *
-     * @return \Illuminate\View\View
-     */
+class OriController extends Controller{
+    public function store(Request $request){
+
+        $validated = $request->validate([
+            'nome' => 'required|string|max:255',
+            'matricula' => 'required|string|max:255|unique:orientadores',
+        ]);
+
+        $orientador = new Orientador();
+        $orientador->nome = $validated['nome'];
+        $orientador->matricula = $validated['matricula'];
+        $orientador->save();
+
+        return redirect()->back()->with('success', 'Orientador registrado com sucesso!');
+    }
+
     public function showRegisterForm()
     {
-        return view('registerOrientador'); // A view onde o formulário está
+        return view('registerOrientador');
     }
 
-    /**
-     * Valida e cria um novo orientador.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function registerOrientador(Request $request)
     {
-        // Validar os dados
-        $validatedData = $request->validate([
-            'nome' => ['required', 'string', 'max:255'],
-            'matricula' => ['required', 'string', 'max:255', 'unique:orientadores'],
+        $validated = $request->validate([
+            'nome' => 'required|string|max:255',
+            'matricula' => 'required|string|max:255|unique:orientadores',
         ]);
 
-        // Criar o orientador no banco de dados
-        Orientador::create([
-            'nome' => $validatedData['nome'],
-            'matricula' => $validatedData['matricula'],
-        ]);
+        $orientador = new Orientador();
+        $orientador->nome = $validated['nome'];
+        $orientador->matricula = $validated['matricula'];
+        $orientador->save();
 
-        // Redirecionar para a página de lista de orientadores ou qualquer outra página
-        return redirect()->route('orientadores.index')->with('success', 'Orientador registrado com sucesso!');
+        return redirect()->back()->with('success', 'Orientador registrado com sucesso!');
     }
 }
+
+
