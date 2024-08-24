@@ -56,17 +56,19 @@ Route::post('/orientador', [OrientadoresController::class, 'orientador'])->name(
 Route::get('/orientadores/{id}/edit', [OriController::class, 'edit'])->name('orientadores.edit');
 Route::put('/orientadores/{id}', [OriController::class, 'update'])->name('orientadores.update');
 
-//Rota de bancas
-Route::get('/bancas', [BancasController ::class, 'showRegisterForm'])
-    ->name('bancasForm')
-   ->middleware('auth');
+// Exibe o formulário de bancas
+Route::get('/bancas', [RegisterBancaController::class, 'index'])
+    ->name('bancas')
+    ->middleware('auth');
 
-Route::post('/bancas', [BancasController ::class, 'bancas'])->name('bancas');
+// Exibe o formulário de registro de uma nova banca
+Route::get('/registerbanca', [RegisterBancaController::class, 'create'])
+    ->name('registerBancaForm')
+    ->middleware('auth');
 
-//Rota de bancas
-Route::get('/registerbanca', [RegisterBancaController ::class, 'showRegisterForm'])
-    ->name('bancasForm')
-   ->middleware('auth');
+// Processa o formulário de registro de uma nova banca
+Route::post('/registerbanca', [RegisterBancaController::class, 'store'])
+    ->name('registerBanca')
+    ->middleware('auth');
 
-Route::post('/registerbanca', [RegisterBancaController ::class, 'registerBanca'])->name('registerBanca');
 

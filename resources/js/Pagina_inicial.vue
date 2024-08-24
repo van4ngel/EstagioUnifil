@@ -1,28 +1,46 @@
 <style scoped>
   .header {
     text-align: center;
-    margin-top: 90px;
+    margin-top: 60px;
+    padding-bottom: 20px;
   }
 
   .header img {
     width: 100%;
     max-width: 400px;
-    margin-bottom: -100px;
+    margin-bottom: 20px; /* Ajustado para manter um espaçamento adequado abaixo da imagem */
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 98vw;
+    width: 190vw;
     height: 80vh;
+    background: linear-gradient(135deg, #f5f7fa, #ebebeb);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
   }
 
   .table {
     display: table;
     width: auto;
-    border-collapse: collapse;
     margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
 
   .row {
@@ -31,106 +49,94 @@
 
   .cell {
     display: table-cell;
-    padding: 10px;
+    padding: 20px;
     text-align: center;
     vertical-align: middle;
   }
 
   .p-button {
-    padding: 15px; /* Ajustado para maior área de clique */
+    display: inline-block; 
+    padding: 15px 25px;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
-    width: 200px; /* Largura fixa para todos os botões */
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 10px;
-    margin-bottom: 40px;
+    width: 290px; 
+    height: 60px; 
+    text-transform: uppercase;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
+    margin: 20px; 
+    overflow: hidden; 
+    text-align: center;
+    line-height: 40px; 
   }
 
   .p-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   }
 
   .p-button-success {
-    background-color: rgba(255, 146, 72, 255);
+    background-color: #f09b39;
     color: black;
-  }
-
-  .p-button-success:hover {
-    background-color: #45a049;
-    color: white;
   }
 
   .p-button-secondary {
-    background-color: rgba(255, 146, 72, 255);
+    background-color: #f09b39;
     color: black;
-  }
-
-  .p-button-secondary:hover {
-    background-color: #45a049;
-    color: white;
-  }
-
-  .p-button-danger {
-    background-color: rgba(255, 146, 72, 255);
-    color: black;
-  }
-
-  .p-button-danger:hover {
-    background-color: #45a049;
-    color: white;
   }
 
   .p-button-warning {
-    background-color: rgba(255, 146, 72, 255);
+    background-color: #f09b39;
     color: black;
   }
 
-  .p-button-warning:hover {
-    background-color: #45a049;
-    color: white;
+  .p-button-danger {
+    background-color: #f09b39;
+    color: black;
+  }
+
+  .p-button-success:hover, .p-button-secondary:hover, .p-button-warning:hover, .p-button-danger:hover {
+    filter: brightness(1.1);
   }
 </style>
+
 
 <template>
   <div class="add-student">
     <div class="header">
       <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
     </div>
-  
+
     <div class="container">
       <div class="table">
         <div class="row">
           <div class="cell">
-            <a href="/alunos" class="p-button p-button-success" >Gerenciar Aluno</a>
+            <a href="/alunos" class="p-button p-button-success">Gerenciar Aluno</a>
           </div>
-
           <div class="cell">
             <a href="/orientador" class="p-button p-button-secondary">Gerenciar Orientador</a>
           </div>
-
-          <div class="row"></div>
+        </div>
+        <div class="row">
           <div class="cell">
             <a href="/bancas" class="p-button p-button-success">Gerenciar Bancas</a>
           </div>
-
           <div class="cell">
             <a href="/App" class="p-button p-button-warning">Gerenciar Notas</a>
           </div>
-
-        
-
+        </div>
+        <div class="row">
           <div class="cell">
             <a href="/App" class="p-button p-button-secondary">Registro de orientações</a>
           </div>
-          
+
+ 
+          <div class="cell">
+            <a href="/App" class="p-button p-button-secondary">Gerenciar tarefas</a>
+          </div>
         </div>
       </div>
     </div>

@@ -15,18 +15,7 @@
             <form method="POST" action="{{ route('registerBanca') }}">
                 @csrf
 
-                <div class="p-field">
-                    <h2 style="text-align: center;">Preencha as informações abaixo para registrar uma nova Banca:</h2>
-
-                    <label for="data_banca">Dia da banca:</label>
-                    <input id="data_banca" type="date" class="form-control @error('data_banca') is-invalid @enderror" name="data_banca" value="{{ old('data_banca') }}" required autofocus>
-                    @error('data_banca')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
+           
                 <div class="p-field">
                     <label for="aluno_id">Aluno:</label>
                     <select id="aluno_id" class="form-control @error('aluno_id') is-invalid @enderror" name="aluno_id" required>
@@ -45,9 +34,9 @@
                 </div>
 
                 <div class="p-field">
-                    <label for="orientador_id">Orientador:</label>
+                    <label for="orientador_id">Avaliadores da banca:</label>
                     <select id="orientador_id" class="form-control @error('orientador_id') is-invalid @enderror" name="orientador_id" required>
-                        <option value="">Selecione um Orientador</option>
+                        <option value="">Selecione um Avaliador</option>
                         @foreach($orientadores as $orientador)
                             <option value="{{ $orientador->id }}" {{ old('orientador_id') == $orientador->id ? 'selected' : '' }}>
                                 {{ $orientador->nome }} (Matrícula: {{ $orientador->matricula }})
@@ -60,7 +49,26 @@
                     </span>
                     @enderror
                 </div>
-                
+             <div class="p-field">
+    <label for="data_banca">Data da Banca:</label>
+    <input 
+        type="date" 
+        id="data_banca" 
+        class="form-control @error('data_banca') is-invalid @enderror" 
+        name="data_banca" 
+        value="{{ old('data_banca') }}" 
+        required
+    >
+    @error('data_banca')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+</div>
+
+
+
+
                 <div class="p-field">
                     <button type="submit" class="p-button p-button-success custom-btn">
                         Registrar

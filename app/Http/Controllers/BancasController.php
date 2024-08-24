@@ -17,10 +17,11 @@ class BancasController extends Controller
         return view('bancas');
     }
 
-    public function register(Request $request)
-    {
-        // Lógica de validação e salvamento pode ser adicionada aqui
-        // Por enquanto, vamos apenas redirecionar de volta para a página inicial
-        return redirect()->route('pagina_inicial')->with('success', 'Orientador registrado com sucesso!');
-    }
+    public function index()
+{
+    $bancas = Banca::with('aluno', 'orientador')->get();
+    return view('bancas', compact('bancas'));
+}
+
+
 }

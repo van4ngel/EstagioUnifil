@@ -10,7 +10,7 @@
             <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
         </div>
         <div class="toldo">
-            <h2 class="title">Bancas cadastrados no sistema:</h2>
+            <h2 class="title">Bancas cadastradas no sistema:</h2>
             <form method="POST" action="{{ route('bancas') }}">
                 @csrf
 
@@ -18,16 +18,22 @@
                     <thead>
                         <tr>
                             <th>Dia</th>
-                            <th>Alunos cadastrados</th>
-                            <th>Orientadores</th>
-                            <th>Estágio do TCC</th>
+                            <th>Aluno</th>
+                            <th>Avaliadores</th>
+                         
                             <th>Data de Criação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        
-                      
-                     
+                        @foreach($bancas as $banca)
+                            <tr>
+                                <td>{{ $banca->data_banca }}</td>
+                                <td>{{ $banca->aluno->nome }}</td>
+                                <td>{{ $banca->orientador->nome }}</td>
+                              
+                                <td>{{ $banca->created_at->format('d/m/Y') }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
 
@@ -46,6 +52,7 @@
 </div>
 @endsection
 
+
 <style scoped>
     #register {
         display: flex;
@@ -53,97 +60,118 @@
         align-items: center;
         width: 100vw;
         height: 100vh;
-        background-color: #f5f5f5;
+        background-color: #f4f7f9; /* Fundo mais suave e moderno */
+        font-family: 'Roboto', sans-serif; /* Fonte moderna e limpa */
     }
 
     .box {
-        width: 90%;
-        max-width: 1200px;
-        padding: 20px;
+        width: 85%;
+        max-width: 1400px; /* Largura máxima maior */
+        padding: 40px 60px; /* Mais padding para um layout mais espaçoso */
         background: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+        overflow: hidden;
+        border: 1px solid #e0e0e0; /* Borda sutil ao redor do container */
     }
 
     .header {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .header img {
         width: 100%;
-        max-width: 300px;
+        max-width: 450px; /* Tamanho máximo da imagem aumentado */
+        border-radius: 10px; /* Arredondamento das bordas da imagem */
     }
 
     .title {
         text-align: center;
-        font-size: 2rem;
+        font-size: 3.5rem; /* Fonte ainda maior para o título */
         color: #333;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
+        font-weight: 700; /* Negrito para destacar o título */
     }
 
     .toldo {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;
     }
 
     .table {
         width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
+        border-collapse: separate; /* Bordas separadas para linhas */
+        border-spacing: 0 15px; /* Espaçamento maior entre as linhas */
+        margin-bottom: 30px;
     }
 
     .table th, .table td {
-        padding: 12px;
+        padding: 20px;
         text-align: left;
-        border-bottom: 1px solid #ddd;
+        border-radius: 12px; /* Bordas arredondadas mais acentuadas */
+        font-size: 1.3rem; /* Fonte maior para as células da tabela */
+        color: #333;
     }
 
     .table th {
-        background-color: #f4f4f4;
-        font-weight: bold;
+        background-color: #007bff; /* Cor de fundo dos cabeçalhos da tabela */
+        color: #ffffff;
+        font-weight: 700;
     }
 
-    .table tr:nth-child(even) {
+    .table td {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0; /* Borda mais leve nas células */
+    }
+
+    .table tr:nth-child(even) td {
         background-color: #f9f9f9;
+    }
+
+    .table tr:hover td {
+        background-color: #f1f1f1; /* Cor de fundo mais destacada ao passar o mouse */
     }
 
     .actions {
         display: flex;
         justify-content: space-between;
+        gap: 20px; /* Espaçamento entre os botões */
     }
 
     .btn {
         display: inline-block;
-        padding: 10px 20px;
+        padding: 15px 30px;
         border: none;
-        border-radius: 5px;
-        font-size: 1rem;
+        border-radius: 12px; /* Bordas mais arredondadas */
+        font-size: 1.2rem;
+        font-weight: bold;
         text-align: center;
         text-decoration: none;
         cursor: pointer;
-        transition: background-color 0.3s, transform 0.3s;
-       
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
 
     .btn-primary {
-        background-color: rgba(255, 146, 72, 255);
+        background-color: #ff924c;
         color: #fff;
     }
 
     .btn-primary:hover {
-        background-color: rgba(255, 146, 72, 255);
+        background-color: #e77f39;
         transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra mais suave no hover */
     }
 
     .btn-secondary {
-        background-color: #4b9cd3;
+        background-color: #007bff;
         color: #fff;
     }
 
     .btn-secondary:hover {
-        background-color: #3a7fbf;
+        background-color: #0056b3;
         transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra mais suave no hover */
     }
 </style>
