@@ -65,10 +65,6 @@
     </span>
     @enderror
 </div>
-
-
-
-
                 <div class="p-field">
                     <button type="submit" class="p-button p-button-success custom-btn">
                         Registrar
@@ -90,16 +86,28 @@
         align-items: center;
         width: 100vw;
         height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .box {
+        width: 80%;
+        max-width: 800px; /* Define um limite máximo de largura para a caixa */
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
     }
 
     .header {
         text-align: center;
-        margin-bottom: 70px;
+        margin-bottom: 40px;
     }
 
     .header img {
         width: 100%;
-        max-width: 400px;
+        max-width: 300px; /* Ajusta o tamanho máximo da imagem */
     }
 
     .toldo {
@@ -114,33 +122,31 @@
     }
 
     label {
-        margin-bottom: 10px;
-        font-size: 15px; /* Aumenta o tamanho da fonte dos labels */
-    }
-
-    @media (max-width: 768px) {
-        .box {
-            width: 90%;
-        }
+        margin-bottom: 8px;
+        font-size: 16px; /* Aumenta o tamanho da fonte dos labels */
     }
 
     input[type="date"],
     select {
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         font-size: 16px;
-        margin-bottom: 5px;
-        border-radius: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: 2px solid #ddd;
+        background-color: #fafafa;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     .p-button,
     .custom-btn {
-        padding: 7px;
+        padding: 12px;
         border: none;
-        border-radius: 10px;
+        border-radius: 8px;
         font-size: 18px;
         cursor: pointer;
-        margin-top: 30px;
+        margin-top: 20px;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -167,13 +173,6 @@
         margin-top: 5px;
     }
 
-    .form-control {
-        border: 2px solid #ddd;
-        background-color: #fafafa;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
     .form-control:focus {
         border-color: rgba(255, 146, 72, 255);
         box-shadow: 0 0 8px rgba(255, 146, 72, 0.3);
@@ -188,8 +187,8 @@
 
     .select-container select.form-control {
         width: 100%;
-        padding: 12px 40px 12px 12px; /* Adiciona espaço para a seta */
-        font-size: 18px;
+        padding: 12px;
+        font-size: 16px;
         border-radius: 8px;
         border: 2px solid #ddd;
         background-color: #fafafa;
@@ -212,5 +211,21 @@
         font-size: 18px;
         color: #333;
         pointer-events: none; /* Faz com que a seta não interfira na seleção */
+    }
+
+    @media (max-width: 768px) {
+        .box {
+            width: 100%;
+            padding: 15px;
+        }
+
+        .header img {
+            max-width: 250px;
+        }
+
+        .p-button,
+        .custom-btn {
+            font-size: 16px;
+        }
     }
 </style>

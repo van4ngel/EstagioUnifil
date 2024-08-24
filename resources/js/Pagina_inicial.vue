@@ -3,6 +3,7 @@
     text-align: center;
     margin-top: 60px;
     padding-bottom: 20px;
+    transform: translateX(-4vw); 
   }
 
   .header img {
@@ -10,6 +11,7 @@
     max-width: 400px;
     margin-bottom: 20px; /* Ajustado para manter um espaçamento adequado abaixo da imagem */
     animation: float 3s ease-in-out infinite;
+    
   }
 
   @keyframes float {
@@ -31,7 +33,9 @@
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
-  }
+    transform: translateX(-4vw); /* Ajuste o valor conforme necessário */
+}
+
 
   .table {
     display: table;

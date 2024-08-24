@@ -32,6 +32,7 @@
                                 <td>{{ $banca->orientador->nome }}</td>
                               
                                 <td>{{ $banca->created_at->format('d/m/Y') }}</td>
+                               
                             </tr>
                         @endforeach
                     </tbody>
@@ -88,7 +89,7 @@
 
     .title {
         text-align: center;
-        font-size: 3.5rem; /* Fonte ainda maior para o título */
+        font-size: 3.0rem; /* Fonte ainda maior para o título */
         color: #333;
         margin-bottom: 30px;
         font-weight: 700; /* Negrito para destacar o título */
