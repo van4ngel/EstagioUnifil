@@ -71,4 +71,9 @@ Route::post('/registerbanca', [RegisterBancaController::class, 'store'])
     ->name('registerBanca')
     ->middleware('auth');
 
+// Rota para exibir o formulário de edição
+Route::get('/bancas/{id}/edit', [BancasController::class, 'edit'])->name('bancas.edit');
+
+// Rota para salvar as alterações
+Route::put('/bancas/{id}', [BancasController::class, 'update'])->name('bancas.update');
 

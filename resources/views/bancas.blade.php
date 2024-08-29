@@ -17,25 +17,28 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Dia</th>
+                            <th>Dia da banca</th>
                             <th>Aluno</th>
                             <th>Avaliadores</th>
                          
                             <th>Data de Criação</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($bancas as $banca)
-                            <tr>
-                                <td>{{ $banca->data_banca }}</td>
-                                <td>{{ $banca->aluno->nome }}</td>
-                                <td>{{ $banca->orientador->nome }}</td>
-                              
-                                <td>{{ $banca->created_at->format('d/m/Y') }}</td>
-                               
-                            </tr>
-                        @endforeach
-                    </tbody>
+    @foreach($bancas as $banca)
+        <tr>
+            <td>{{ $banca->data_banca }}</td>
+            <td>{{ $banca->aluno->nome }}</td>
+            <td>{{ $banca->orientador->nome }}</td>
+            <td>{{ $banca->created_at->format('d/m/Y') }}</td>
+            <td>
+                <a href="{{ route('bancas.edit', $banca->id) }}" class="btn btn-warning">Modificar</a>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
+
                 </table>
 
                 <div class="actions">
