@@ -77,3 +77,9 @@ Route::get('/bancas/{id}/edit', [BancasController::class, 'edit'])->name('bancas
 // Rota para salvar as alterações
 Route::put('/bancas/{id}', [BancasController::class, 'update'])->name('bancas.update');
 
+// Rota de tarefas
+Route::get('/tarefas', [TarefasController::class, 'showRegisterForm'])
+    ->name('tarefasForm')
+    ->middleware('auth');
+
+Route::post('/tarefas', [TarefasController::class, 'tarefas'])->name('tarefas');

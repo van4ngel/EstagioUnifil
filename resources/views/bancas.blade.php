@@ -20,7 +20,6 @@
                             <th>Dia da banca</th>
                             <th>Aluno</th>
                             <th>Avaliadores</th>
-                         
                             <th>Data de Criação</th>
                             <th>Ações</th>
                         </tr>

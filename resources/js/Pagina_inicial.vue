@@ -139,7 +139,7 @@
 
  
           <div class="cell">
-            <a href="/App" class="p-button p-button-secondary">Gerenciar tarefas</a>
+            <a href="/tarefas" class="p-button p-button-secondary">Gerenciar tarefas</a>
           </div>
         </div>
       </div>
