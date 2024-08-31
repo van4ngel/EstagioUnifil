@@ -26,22 +26,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($alunos as $aluno)
-                            <tr>
-                                <td>{{ $aluno->nome }}</td>
-                                <td>{{ $aluno->matricula }}</td>
-                                <td>{{ $aluno->orientador ? $aluno->orientador->nome : 'Não atribuído' }}</td>
-                                <td>{{ $aluno->estagio_do_tcc }}</td>
-                                <td>{{ $aluno->created_at }}</td>
-                                <td>
-                                    <!-- Botão para modificar o aluno -->
-                                    <a href="{{ route('alunos.edit', $aluno->id) }}" class="btn btn-warning">
-                                        Modificar
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
+    @foreach($alunos as $aluno)
+        <tr>
+            <td>{{ $aluno->nome }}</td>
+            <td>{{ $aluno->matricula }}</td>
+            <td>{{ $aluno->orientador ? $aluno->orientador->nome : 'Não atribuído' }}</td>
+            <td>{{ $aluno->estagio_do_tcc }}</td>
+            <td>{{ \Carbon\Carbon::parse($aluno->created_at)->format('d/m/Y ') }}</td>
+            <td>
+                <!-- Botão para modificar o aluno -->
+                <a href="{{ route('alunos.edit', $aluno->id) }}" class="btn btn-warning">
+                    Modificar
+                </a>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
+
                 </table>
 
                 <div class="actions">

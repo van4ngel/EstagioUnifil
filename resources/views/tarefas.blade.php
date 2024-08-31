@@ -4,91 +4,68 @@
 <div id="register">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registrar Tarefa</title>
+    <title>Gerenciar Tarefas</title>
     <div class="box">
         <div class="header">
             <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
         </div>
-        <div class="toldo">
-            <form method="POST" action="{{ route('tarefas') }}">
-                @csrf
+     <div class="toldo">
+    <h2 class="title">Tarefas registradas no sistema:</h2>
 
-                <div class="p-field">
-                    <label for="tema">Tema da Tarefa:</label>
-                    <input 
-                        type="text" 
-                        id="tema" 
-                        class="form-control @error('tema') is-invalid @enderror" 
-                        name="tema" 
-                        value="{{ old('tema') }}" 
-                        required
-                    >
-                    @error('tema')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
+  
+</div>
 
-                <div class="p-field">
-                    <label for="estagio">Estágio do TCC:</label>
-                    <input 
-                        type="text" 
-                        id="estagio" 
-                        class="form-control @error('estagio') is-invalid @enderror" 
-                        name="estagio" 
-                        value="{{ old('estagio') }}" 
-                        required
-                    >
-                    @error('estagio')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
 
-                <div class="p-field">
-                    <label for="data_entrega">Data de Entrega:</label>
-                    <input 
-                        type="date" 
-                        id="data_entrega" 
-                        class="form-control @error('data_entrega') is-invalid @enderror" 
-                        name="data_entrega" 
-                        value="{{ old('data_entrega') }}" 
-                        required
-                    >
-                    @error('data_entrega')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
+        <!-- Lista de tarefas -->
+        <div class="task-list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tema</th>
+                        <th>Estágio do TCC</th>
+                        <th>Data de Entrega</th>
+                        <th>Link no Classroom</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if($tarefas->isEmpty())
+                        <tr>
+                            <td colspan="5">Nenhuma tarefa registrada.</td>
+                        </tr>
+                    @else
+                        @foreach($tarefas as $tarefa)
+                            <tr>
+                                <td>{{ $tarefa->tema }}</td>
+                                <td>{{ $tarefa->estagio }}</td>
+                                <td>{{ \Carbon\Carbon::parse($tarefa->data_entrega)->format('d/m/Y') }}</td>
 
-                <div class="p-field">
-                    <label for="link">Link Opcional:</label>
-                    <input 
-                        type="url" 
-                        id="link" 
-                        class="form-control @error('link') is-invalid @enderror" 
-                        name="link" 
-                        value="{{ old('link') }}"
-                    >
-                    @error('link')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="p-field">
-                    <button type="submit" class="p-button p-button-success custom-btn">
-                        Registrar
-                    </button>
-                    <a href="{{ route('pagina_inicial') }}" class="p-button p-button-success custom-btn">
-                        Voltar
-                    </a>
-                </div>
-            </form>
+                                <td>
+                                    @if($tarefa->link)
+                                        <a href="{{ $tarefa->link }}" target="_blank">{{ $tarefa->link }}</a>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('tarefas.edit', $tarefa->id) }}" class="btn btn-warning">
+                                        Modificar
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
+            <div class="actions">
+        <a href="{{ route('AdicionarTarefas') }}" class="btn btn-primary">
+            Adicionar Tarefa
+        </a>
+        <a href="{{ route('pagina_inicial') }}" class="btn btn-secondary">
+            Voltar
+        </a>
+    </div>
         </div>
     </div>
 </div>
@@ -102,75 +79,118 @@
         align-items: center;
         width: 100vw;
         height: 100vh;
+        background-color: #f4f7f9;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .box {
+        width: 85%;
+        max-width: 1400px;
+        padding: 40px 60px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
     }
 
     .header {
         text-align: center;
-        margin-bottom: 70px;
+        margin-bottom: 30px;
     }
 
     .header img {
         width: 100%;
-        max-width: 400px;
+        max-width: 450px;
+        border-radius: 10px;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 3.0rem;
+        color: #333;
+        margin-bottom: 30px;
+        font-weight: 700;
     }
 
     .toldo {
         display: flex;
         flex-direction: column;
+        gap: 30px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 15px;
+        margin-bottom: 30px;
+    }
+
+    .table th, .table td {
+        padding: 20px;
+        text-align: left;
+        border-radius: 12px;
+        font-size: 1.3rem;
+        color: #333;
+    }
+
+    .table th {
+        background-color: #007bff;
+        color: #ffffff;
+        font-weight: 700;
+    }
+
+    .table td {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+    }
+
+    .table tr:nth-child(even) td {
+        background-color: #f9f9f9;
+    }
+
+    .table tr:hover td {
+        background-color: #f1f1f1;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-between;
         gap: 20px;
     }
 
-    .p-field {
-        display: flex;
-        flex-direction: column;
-    }
-
-    label {
-    margin-bottom: 15px;
-    font-size: 18px; /* Aumenta o tamanho da fonte dos labels */
-}
-
-
-    @media (max-width: 768px) {
-        .box {
-            width: 90%;
-        }
-    }
-
-    input[type="text"],
-    select {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        margin-bottom: 5px;
-        border-radius: 10px;
-    }
-
-    .p-button,
-    .custom-btn {
-        padding: 7px;
+    .btn {
+        display: inline-block;
+        padding: 15px 30px;
         border: none;
-        border-radius: 10px;
-        font-size: 18px;
-        cursor: pointer;
-        margin-top: 30px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        font-weight: bold;
         text-align: center;
-        background-color: rgba(255, 146, 72, 255);
-        color: black;
         text-decoration: none;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
 
-    .p-button:hover,
-    .custom-btn:hover {
-        transform: translateY(-2px);
-        background-color: rgba(255, 146, 72, 255);
-        color: white;
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    .btn-primary {
+        background-color: #ff924c;
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        background-color: #e77f39;
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-secondary {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btn-secondary:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     }
 </style>

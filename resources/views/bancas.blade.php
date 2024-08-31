@@ -27,16 +27,17 @@
                     <tbody>
     @foreach($bancas as $banca)
         <tr>
-            <td>{{ $banca->data_banca }}</td>
+            <td>{{ \Carbon\Carbon::parse($banca->data_banca)->format('d/m/Y') }}</td>
             <td>{{ $banca->aluno->nome }}</td>
             <td>{{ $banca->orientador->nome }}</td>
-            <td>{{ $banca->created_at->format('d/m/Y') }}</td>
+            <td>{{ \Carbon\Carbon::parse($banca->created_at)->format('d/m/Y') }}</td>
             <td>
                 <a href="{{ route('bancas.edit', $banca->id) }}" class="btn btn-warning">Modificar</a>
             </td>
         </tr>
     @endforeach
 </tbody>
+
 
                 </table>
 

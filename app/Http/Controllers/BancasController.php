@@ -10,20 +10,19 @@ use App\Models\Banca;
 
 class BancasController extends Controller
 {
-    // Exibe a lista de bancas cadastradas
+
     public function index()
     {
         $bancas = Banca::with('aluno', 'orientador')->get();
         return view('bancas', compact('bancas'));
     }
 
-    // Exibe o formulário de cadastro de uma nova banca
+  
     public function showRegisterForm()
     {
         return view('bancas');
     }
 
-    // Exibe o formulário de edição de uma banca existente
     public function edit($id)
     {
         $banca = Banca::findOrFail($id);
@@ -33,7 +32,6 @@ class BancasController extends Controller
         return view('editBanca', compact('banca', 'alunos', 'orientadores'));
     }
 
-    // Atualiza uma banca existente no banco de dados
     public function update(Request $request, $id)
     {
         $request->validate([

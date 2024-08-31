@@ -74,43 +74,43 @@
         align-items: center;
         width: 100vw;
         height: 100vh;
-        background-color: #f8f9fa; /* Cor de fundo */
+        background-color: #e9ecef; /* Cor de fundo mais suave */
     }
 
     .box {
         background: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         width: 100%;
-        max-width: 600px;
-        padding: 20px;
+        max-width: 700px; /* Aumentado para mais espaço */
+        padding: 30px;
     }
 
     .header {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .header h2 {
-        font-size: 24px;
+        font-size: 28px; /* Aumentado para maior destaque */
         color: #333;
     }
 
     .toldo {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 20px; /* Aumentado para mais espaço entre os campos */
     }
 
     .p-field {
         display: flex;
         flex-direction: column;
-        margin-bottom: 15px;
+        margin-bottom: 20px; 
     }
 
     label {
-        margin-bottom: 8px;
-        font-size: 16px;
+        margin-bottom: 10px; 
+        font-size: 18px; 
         color: #333;
         font-weight: bold;
     }
@@ -118,46 +118,46 @@
     input[type="text"],
     select {
         width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        margin-bottom: 5px;
+        padding: 14px; 
+        font-size: 18px; /
+        margin-bottom: 10px; 
         border-radius: 8px;
-        border: 1px solid #ddd;
-        background-color: #fafafa;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ccc;  
+        background-color: #f9f9f9;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
         transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     input[type="text"]:focus,
     select:focus {
         border-color: #ff924c;
-        box-shadow: 0 0 8px rgba(255, 146, 72, 0.3);
+        box-shadow: 0 0 10px rgba(255, 146, 72, 0.3);
         outline: none;
     }
 
     .btn-success {
-        padding: 10px;
+        padding: 14px 20px; /* Aumentado para maior conforto */
         border: none;
         border-radius: 8px;
-        font-size: 20px;
+        font-size: 22px; /* Aumentado para maior destaque */
         cursor: pointer;
-        background-color: #28a745;
+        background-color: #f09b39; /* Cor do botão */
         color: white;
         text-align: center;
         transition: background-color 0.3s, transform 0.3s;
     }
 
     .btn-success:hover {
-        background-color: #218838;
+        background-color: #d88b29; /* Cor mais escura para hover */
         transform: translateY(-2px);
     }
 
     .custom-btn {
         display: block;
-        padding: 10px;
+        padding: 12px 20px; 
         border: none;
         border-radius: 8px;
-        font-size: 16px;
+        font-size: 18px; 
         cursor: pointer;
         text-align: center;
         background-color: #007bff;
@@ -179,28 +179,28 @@
 
     .select-container select.form-control {
         width: 100%;
-        padding: 12px 40px 12px 12px;
-        font-size: 16px;
+        padding: 14px 40px 14px 14px; /* Aumentado para maior conforto */
+        font-size: 18px; /* Aumentado para melhor legibilidade */
         border-radius: 8px;
-        border: 1px solid #ddd;
-        background-color: #fafafa;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ccc; /* Cor de borda mais suave */
+        background-color: #f9f9f9; /* Cor de fundo mais clara */
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
         appearance: none;
         transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     .select-container select.form-control:focus {
         border-color: #ff924c;
-        box-shadow: 0 0 8px rgba(255, 146, 72, 0.3);
+        box-shadow: 0 0 10px rgba(255, 146, 72, 0.3);
         outline: none;
     }
 
     .select-icon {
         position: absolute;
         top: 50%;
-        right: 10px;
+        right: 12px; /* Ajustado para alinhamento */
         transform: translateY(-50%);
-        font-size: 18px;
+        font-size: 20px; /* Aumentado para maior visibilidade */
         color: #333;
         pointer-events: none;
     }

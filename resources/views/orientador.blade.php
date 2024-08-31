@@ -23,31 +23,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($orientadores as $orientador)
-                        <tr>
-                            <td>{{ $orientador->nome }}</td>
-                            <td>{{ $orientador->matricula }}</td>
-                            <td>
-                                <div class="aluno-lista">
-                                    @if($orientador->alunos->isEmpty())
-                                        <div class="aluno-item">Nenhum aluno atribuído</div>
-                                    @else
-                                        @foreach($orientador->alunos as $aluno)
-                                            <div class="aluno-item">{{ $aluno->nome }} (Matrícula: {{ $aluno->matricula }})</div>
-                                        @endforeach
-                                    @endif
-                                </div>
-                            </td>
-                            <td>{{ $orientador->created_at }}</td>
-                            <td>
-                                <!-- Botão para modificar o orientador -->
-                                <a href="{{ route('orientadores.edit', $orientador->id) }}" class="btn btn-warning">
-                                    Modificar
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
+    @foreach($orientadores as $orientador)
+        <tr>
+            <td>{{ $orientador->nome }}</td>
+            <td>{{ $orientador->matricula }}</td>
+            <td>
+                <div class="aluno-lista">
+                    @if($orientador->alunos->isEmpty())
+                        <div class="aluno-item">Nenhum aluno atribuído</div>
+                    @else
+                        @foreach($orientador->alunos as $aluno)
+                            <div class="aluno-item">{{ $aluno->nome }} (Matrícula: {{ $aluno->matricula }})</div>
+                        @endforeach
+                    @endif
+                </div>
+            </td>
+            <td>{{ \Carbon\Carbon::parse($orientador->created_at)->format('d/m/Y') }}</td>
+            <td>
+                <!-- Botão para modificar o orientador -->
+                <a href="{{ route('orientadores.edit', $orientador->id) }}" class="btn btn-warning">
+                    Modificar
+                </a>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
+
             </table>
 
             <div class="actions">

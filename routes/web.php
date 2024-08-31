@@ -9,6 +9,7 @@ use App\Http\Controllers\BancasController;
 use App\Http\Controllers\Auth\AlunosController;
 use App\Http\Controllers\OrientadoresController;
 use App\Http\Controllers\RegisterBancaController;
+use App\Http\Controllers\AdicionarTarefasController;
 Auth::routes();
 
 // Rota de login
@@ -83,3 +84,17 @@ Route::get('/tarefas', [TarefasController::class, 'showRegisterForm'])
     ->middleware('auth');
 
 Route::post('/tarefas', [TarefasController::class, 'tarefas'])->name('tarefas');
+
+
+// Rota para exibir o formulário de registro de tarefas
+Route::get('/AdicionarTarefas', [AdicionarTarefasController::class, 'showRegisterForm'])
+    ->name('AdicionarTarefasForm')
+    ->middleware('auth');
+
+// Rota para processar o formulário de registro de tarefas
+Route::post('/AdicionarTarefas', [AdicionarTarefasController::class, 'register'])
+    ->name('AdicionarTarefas')
+    ->middleware('auth');
+
+    Route::get('/tarefas/{id}/edit', [AdicionarTarefasController::class, 'edit'])->name('tarefas.edit');
+Route::put('/tarefas/{id}', [AdicionarTarefasController::class, 'update'])->name('tarefas.update');
