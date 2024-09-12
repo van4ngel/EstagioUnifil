@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Editar Aluno</title>
     <div class="box">
+    <div class="header">
+            <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
+        </div>
         <div class="header">
             <h2>Editar Aluno</h2>
         </div>
@@ -73,22 +76,23 @@
         justify-content: center;
         align-items: center;
         width: 100vw;
-        height: 100vh;
+        height: 90vh;
         background-color: #e9ecef; /* Cor de fundo mais suave */
     }
 
     .box {
         background: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 700px; /* Aumentado para mais espaço */
-        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 600px;
+        padding: 20px;
     }
+
 
     .header {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
 
     .header h2 {
@@ -99,13 +103,13 @@
     .toldo {
         display: flex;
         flex-direction: column;
-        gap: 20px; /* Aumentado para mais espaço entre os campos */
+        gap: 15px; /* Aumentado para mais espaço entre os campos */
     }
 
     .p-field {
         display: flex;
         flex-direction: column;
-        margin-bottom: 20px; 
+        margin-bottom: 15px; 
     }
 
     label {
@@ -119,7 +123,7 @@
     select {
         width: 100%;
         padding: 14px; 
-        font-size: 18px; /
+        font-size: 18px; 
         margin-bottom: 10px; 
         border-radius: 8px;
         border: 1px solid #ccc;  
@@ -136,25 +140,25 @@
     }
 
     .btn-success {
-        padding: 14px 20px; /* Aumentado para maior conforto */
+        padding: 14px 20px; 
         border: none;
         border-radius: 8px;
-        font-size: 22px; /* Aumentado para maior destaque */
+        font-size: 20px; 
         cursor: pointer;
-        background-color: #f09b39; /* Cor do botão */
+        background-color: #f09b39;  
         color: white;
         text-align: center;
         transition: background-color 0.3s, transform 0.3s;
     }
 
     .btn-success:hover {
-        background-color: #d88b29; /* Cor mais escura para hover */
+        background-color: #f09b39; 
         transform: translateY(-2px);
     }
 
     .custom-btn {
         display: block;
-        padding: 12px 20px; 
+        padding: 6px 20px; 
         border: none;
         border-radius: 8px;
         font-size: 18px; 

@@ -129,17 +129,15 @@
             <a href="/bancas" class="p-button p-button-success">Gerenciar Bancas</a>
           </div>
           <div class="cell">
-            <a href="/App" class="p-button p-button-warning">Gerenciar Notas</a>
+            <a href="/tarefas" class="p-button p-button-warning">Gerenciar tarefas</a>
           </div>
         </div>
         <div class="row">
           <div class="cell">
             <a href="/App" class="p-button p-button-secondary">Registro de orientações</a>
           </div>
-
- 
           <div class="cell">
-            <a href="/tarefas" class="p-button p-button-secondary">Gerenciar tarefas</a>
+            <a href="/tarefas" class="p-button p-button-secondary">Gerenciar Notas</a>
           </div>
         </div>
       </div>

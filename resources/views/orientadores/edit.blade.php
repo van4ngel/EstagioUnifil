@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Editar Orientador</title>
     <div class="box">
+    <div class="header">
+            <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
+        </div>
         <div class="header">
             <h2>Editar Orientador</h2>
         </div>
@@ -43,7 +46,7 @@
         align-items: center;
         width: 100vw;
         height: 100vh;
-        background-color: #f8f9fa; /* Cor de fundo */
+        background-color: #f8f9fa; 
     }
 
     .box {

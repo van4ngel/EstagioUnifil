@@ -66,15 +66,15 @@
         justify-content: center;
         align-items: center;
         width: 100vw;
-        height: 100vh;
+        height: 90vh;
         background-color: #f4f7f9; /* Fundo mais suave e moderno */
         font-family: 'Roboto', sans-serif; /* Fonte moderna e limpa */
     }
 
     .box {
-        width: 85%;
+        width: 75%;
         max-width: 1400px; /* Largura máxima maior */
-        padding: 40px 60px; /* Mais padding para um layout mais espaçoso */
+        padding: 20px 60px; /* Mais padding para um layout mais espaçoso */
         background: #ffffff;
         border-radius: 20px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
@@ -95,7 +95,7 @@
 
     .title {
         text-align: center;
-        font-size: 3.0rem; /* Fonte ainda maior para o título */
+        font-size: 2.0rem; /* Fonte ainda maior para o título */
         color: #333;
         margin-bottom: 30px;
         font-weight: 700; /* Negrito para destacar o título */
@@ -110,7 +110,7 @@
     .table {
         width: 100%;
         border-collapse: separate; /* Bordas separadas para linhas */
-        border-spacing: 0 15px; /* Espaçamento maior entre as linhas */
+        border-spacing: 0 10px; /* Espaçamento maior entre as linhas */
         margin-bottom: 30px;
     }
 
