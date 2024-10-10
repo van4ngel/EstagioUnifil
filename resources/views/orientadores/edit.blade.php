@@ -23,8 +23,8 @@
                 </div>
 
                 <div class="p-field">
-                    <label for="matricula">Matrícula:</label>
-                    <input id="matricula" type="text" name="matricula" value="{{ $orientador->matricula }}" required>
+                    <label for="email">Matrícula:</label>
+                    <input id="email" type="text" name="email" value="{{ $orientador->email }}" required>
                 </div>
 
                 <div class="p-field">

@@ -11,7 +11,7 @@
         </div>
         <div class="toldo">
             <h2 class="title">Alunos cadastrados no sistema:</h2>
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('vizualizar_aluno') }}">
                 @csrf
 
                 <table class="table">
@@ -35,9 +35,7 @@
             <td>{{ \Carbon\Carbon::parse($aluno->created_at)->format('d/m/Y ') }}</td>
             <td>
                 <!-- Botão para modificar o aluno -->
-                <a href="{{ route('alunos.edit', $aluno->id) }}" class="btn btn-warning">
-                    Modificar
-                </a>
+                
             </td>
         </tr>
     @endforeach
@@ -47,7 +45,7 @@
 
                 <div class="actions">
                     <a href="{{ route('register') }}" class="btn btn-primary">
-                        Adicionar Aluno
+                        Adicionaaaar Aluno
                     </a>
 
                     <a href="{{ route('pagina_inicial') }}" class="btn btn-secondary">

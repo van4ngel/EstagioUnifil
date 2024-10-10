@@ -81,68 +81,69 @@
         height: 100vh;
         background-color: #f4f7f9;
         font-family: 'Roboto', sans-serif;
+        padding: 10px; /* Padding reduzido para evitar que o conteúdo fique muito próximo das bordas */
     }
 
     .box {
-        width: 85%;
-        max-width: 1400px;
-        padding: 40px 60px;
+        width: 95%;
+        max-width: 1200px;
+        padding: 20px;
         background: #ffffff;
-        border-radius: 20px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         overflow: hidden;
         border: 1px solid #e0e0e0;
     }
 
     .header {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 50px; /* Espaço maior abaixo do header */
     }
 
     .header img {
         width: 100%;
-        max-width: 450px;
-        border-radius: 10px;
+        max-width: 300px; /* Ajuste para imagem em dispositivos móveis */
+        border-radius: 8px;
+        margin-bottom: 20px; /* Espaço abaixo da imagem */
     }
 
     .title {
         text-align: center;
-        font-size: 3.0rem;
+        font-size: 1.5rem;
         color: #333;
-        margin-bottom: 30px;
-        font-weight: 700;
+        margin-bottom: 20px;
+        font-weight: 600;
     }
 
     .toldo {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 20px;
     }
 
     .table {
         width: 100%;
-        border-collapse: separate;
-        border-spacing: 0 15px;
-        margin-bottom: 30px;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        table-layout: auto;
     }
 
     .table th, .table td {
-        padding: 20px;
+        padding: 12px;
         text-align: left;
-        border-radius: 12px;
-        font-size: 1.3rem;
+        border: 1px solid #e0e0e0;
+        font-size: 1.0rem;
         color: #333;
     }
 
     .table th {
         background-color: #007bff;
         color: #ffffff;
-        font-weight: 700;
+        font-weight: 600;
     }
 
     .table td {
         background-color: #ffffff;
-        border: 1px solid #e0e0e0;
     }
 
     .table tr:nth-child(even) td {
@@ -156,18 +157,17 @@
     .actions {
         display: flex;
         justify-content: space-between;
-        gap: 20px;
+        gap: 15px;
     }
 
     .btn {
         display: inline-block;
-        padding: 15px 30px;
+        padding: 10px 20px;
         border: none;
-        border-radius: 12px;
-        font-size: 1.2rem;
+        border-radius: 8px;
+        font-size: 1.0rem;
         font-weight: bold;
         text-align: center;
-        text-decoration: none;
         cursor: pointer;
         transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
@@ -193,4 +193,68 @@
         transform: scale(1.05);
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     }
+
+    /* Responsividade para telas menores */
+    @media (max-width: 768px) {
+        .box {
+            width: 1000%;
+            padding: 10px;
+        }
+
+        .header img {
+            max-width: 450px;
+            margin-bottom: 100px; /* Reduz o espaço abaixo da imagem */
+        }
+
+        .title {
+            font-size: 1.2rem;
+            margin-bottom: 15px; /* Reduz o espaço abaixo do título */
+        }
+
+        .table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .table thead {
+            display: none;
+        }
+
+        .table tbody tr {
+            display: block;
+            margin-bottom: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #ffffff;
+            padding: 10px;
+        }
+
+        .table tbody td {
+            display: block;
+            text-align: left;
+            font-size: 0.9rem;
+            padding: 1px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .table tbody td::before {
+            content: attr(data-label);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #007bff;
+        }
+
+        .btn {
+            width: 60%;
+            padding:8px 10px;
+        }
+
+        .actions {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
 </style>
+

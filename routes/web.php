@@ -10,16 +10,32 @@ use App\Http\Controllers\Auth\AlunosController;
 use App\Http\Controllers\OrientadoresController;
 use App\Http\Controllers\RegisterBancaController;
 use App\Http\Controllers\AdicionarTarefasController;
-Auth::routes();
+use App\Http\Controllers\CadastroOrientadorController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\OrientadorLoginController;
+use App\Http\Controllers\Controller\Auth;
+use App\Http\Controllers\HomeOrientadorController;
+use App\Http\Controllers\vizualizar_alunoController;
 
+//Auth::routes()
 // Rota de login
-Route::get('login', [\App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
+Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'loginteste'])->name('login.submit');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Rotas para login do orientador
+Route::get('/loginOrientador', [OrientadorLoginController::class, 'showLoginForm'])->name('login.orientador');
+Route::post('/loginOrientador', [OrientadorLoginController::class, 'login'])-> name('login.submit2');
+Route::post('/orientador/logout', [OrientadorLoginController::class, 'logout'])->name('orientador.logout');
 
 // Rota de página inicial
 Route::get('/home', [HomeController::class, 'index'])
     ->name('pagina_inicial')
     ->middleware('auth');
 
+    Route::get('/homeorientador', [HomeOrientadorController::class, 'index'])
+   ->name('homeorientador');
+    
 // Rota de registro
 Route::get('/register', [RegisterController::class, 'showRegisterForm'])
     ->name('registerForm')
@@ -98,3 +114,17 @@ Route::post('/AdicionarTarefas', [AdicionarTarefasController::class, 'register']
 
     Route::get('/tarefas/{id}/edit', [AdicionarTarefasController::class, 'edit'])->name('tarefas.edit');
 Route::put('/tarefas/{id}', [AdicionarTarefasController::class, 'update'])->name('tarefas.update');
+
+
+// Rota de registro de orientador cadastro
+Route::get('/cadastroOrientador', [CadastroOrientadorController::class, 'showRegisterForm'])
+    ->name('cadastroOrientadorForm')
+    ->middleware('guest');
+
+Route::post('/cadastroOrientador', [CadastroOrientadorController::class, 'cadastroOrientador'])->name('cadastroOrientador');
+
+
+Route::get('/Vizualizar_aluno', [vizualizar_alunoController::class, 'showRegisterForm'])
+    ->name('alunosVizualizar');
+
+Route::post('/Vizualizar_aluno', [vizualizar_alunoController::class, 'alunos'])->name('alunos');

@@ -11,7 +11,7 @@
             <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
         </div>
         <div class="toldo">
-            <form method="POST" action="{{ route('login.submit') }}">
+            <form method="POST" action="{{ route('login.submit2') }}">
                 @csrf
 
                 
@@ -49,13 +49,7 @@
         Não tem conta? 
         <a href="{{ route('cadastroOrientador') }}" class="cadastro-link">Faça seu cadastro</a>
     </div>
-
-    <div class="register-link">
-        Se voce for um orientador e ja tem conta
-        <a href="{{ route('login.orientador') }}" class="cadastro-link">faça seu login por aqui</a>
-    </div>
             </form>
-
         </div>
     </div>
 </div>

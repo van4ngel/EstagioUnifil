@@ -26,9 +26,9 @@
                 </div>
 
                 <div class="p-field">
-                    <label for="matricula">Matrícula:</label>
+                    <label for="email">Matrícula:</label>
                     <br>
-                    <input id="matricula" type="text" class="form-control @error('matricula') is-invalid @enderror" name="matricula" value="{{ old('matricula') }}" required>
+                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
                     @error('matricula')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

@@ -1,27 +1,32 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable; // Importa a trait Notifiable
+use Illuminate\Foundation\Auth\User as Authenticatable; // Se o coordenador for autenticável
 
-class Orientador extends Model
+class Orientador extends Authenticatable
 {
-    use HasFactory;
+    use Notifiable;
 
-    protected $table = 'orientadores'; // Nome correto da tabela
+    protected $table = 'orientadores';
 
-    // Defina os atributos que podem ser preenchidos em massa
-    protected $fillable = ['nome', 'matricula'];
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
 
-    // Defina o relacionamento com o modelo Aluno
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
     public function alunos()
     {
         return $this->hasMany(Aluno::class);
     }
 
     public function bancas()
-{
-    return $this->hasMany(Banca::class);
-}
-
+    {
+        return $this->hasMany(Banca::class);
+    }
 }

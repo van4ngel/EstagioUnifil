@@ -72,70 +72,71 @@
         align-items: center;
         width: 100vw;
         height: 100vh;
-        background-color: #f4f7f9; /* Fundo mais suave e moderno */
-        font-family: 'Roboto', sans-serif; /* Fonte moderna e limpa */
+        background-color: #f4f7f9;
+        font-family: 'Roboto', sans-serif;
+        padding: 10px; /* Padding reduzido para evitar que o conteúdo fique muito próximo das bordas */
     }
 
     .box {
-        width: 85%;
-        max-width: 1400px; /* Largura máxima maior */
-        padding: 40px 60px; /* Mais padding para um layout mais espaçoso */
+        width: 95%;
+        max-width: 1200px;
+        padding: 20px;
         background: #ffffff;
-        border-radius: 20px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         overflow: hidden;
-        border: 1px solid #e0e0e0; /* Borda sutil ao redor do container */
+        border: 1px solid #e0e0e0;
     }
 
     .header {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 50px; /* Espaço maior abaixo do header */
     }
 
     .header img {
         width: 100%;
-        max-width: 450px; /* Tamanho máximo da imagem aumentado */
-        border-radius: 10px; /* Arredondamento das bordas da imagem */
+        max-width: 300px; /* Ajuste para imagem em dispositivos móveis */
+        border-radius: 8px;
+        margin-bottom: 20px; /* Espaço abaixo da imagem */
     }
 
     .title {
         text-align: center;
-        font-size: 3.0rem; /* Fonte ainda maior para o título */
+        font-size: 1.5rem;
         color: #333;
-        margin-bottom: 30px;
-        font-weight: 700; /* Negrito para destacar o título */
+        margin-bottom: 20px;
+        font-weight: 600;
     }
 
     .toldo {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 20px;
     }
 
     .table {
         width: 100%;
-        border-collapse: separate; /* Bordas separadas para linhas */
-        border-spacing: 0 15px; /* Espaçamento maior entre as linhas */
-        margin-bottom: 30px;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        table-layout: auto;
     }
 
     .table th, .table td {
-        padding: 20px;
+        padding: 12px;
         text-align: left;
-        border-radius: 12px; /* Bordas arredondadas mais acentuadas */
-        font-size: 1.3rem; /* Fonte maior para as células da tabela */
+        border: 1px solid #e0e0e0;
+        font-size: 1.0rem;
         color: #333;
     }
 
     .table th {
-        background-color: #007bff; /* Cor de fundo dos cabeçalhos da tabela */
+        background-color: #007bff;
         color: #ffffff;
-        font-weight: 700;
+        font-weight: 600;
     }
 
     .table td {
         background-color: #ffffff;
-        border: 1px solid #e0e0e0; /* Borda mais leve nas células */
     }
 
     .table tr:nth-child(even) td {
@@ -143,24 +144,23 @@
     }
 
     .table tr:hover td {
-        background-color: #f1f1f1; /* Cor de fundo mais destacada ao passar o mouse */
+        background-color: #f1f1f1;
     }
 
     .actions {
         display: flex;
         justify-content: space-between;
-        gap: 20px; /* Espaçamento entre os botões */
+        gap: 15px;
     }
 
     .btn {
         display: inline-block;
-        padding: 15px 30px;
+        padding: 10px 20px;
         border: none;
-        border-radius: 12px; /* Bordas mais arredondadas */
-        font-size: 1.2rem;
+        border-radius: 8px;
+        font-size: 1.0rem;
         font-weight: bold;
         text-align: center;
-        text-decoration: none;
         cursor: pointer;
         transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
@@ -173,7 +173,7 @@
     .btn-primary:hover {
         background-color: #e77f39;
         transform: scale(1.05);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra mais suave no hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     }
 
     .btn-secondary {
@@ -184,7 +184,70 @@
     .btn-secondary:hover {
         background-color: #0056b3;
         transform: scale(1.05);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra mais suave no hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsividade para telas menores */
+    @media (max-width: 768px) {
+        .box {
+            width: 1000%;
+            padding: 10px;
+        }
+
+        .header img {
+            max-width: 450px;
+            margin-bottom: 260px; /* Reduz o espaço abaixo da imagem */
+        }
+
+        .title {
+            font-size: 1.2rem;
+            ttext-align: center;
+            margin-bottom: 10px; /* Reduz o espaço abaixo do título */
+        }
+
+        .table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .table thead {
+            display: none;
+        }
+
+        .table tbody tr {
+            display: block;
+            margin-bottom: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #ffffff;
+            padding: 10px;
+        }
+
+        .table tbody td {
+            display: block;
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .table tbody td::before {
+            content: attr(data-label);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #007bff;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 8px 15px;
+        }
+
+        .actions {
+            flex-direction: column;
+            gap: 10px;
+        }
     }
 </style>
-
