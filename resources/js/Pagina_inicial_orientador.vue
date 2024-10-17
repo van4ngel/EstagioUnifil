@@ -120,22 +120,20 @@
       <div class="table">
         <div class="row">
           <div class="cell">
-            <a href="/alunos" class="p-button p-button-success">Vizualizar Aluno</a>
+            <a href="/vizualizar_aluno" class="p-button p-button-success">Vizualizar Aluno</a>
           </div>
-          
         </div>
         <div class="row">
           <div class="cell">
-            <a href="/bancas" class="p-button p-button-success">Vizualizar ou realizar Bancas</a>
+            <a href="/vizualizar_banca" class="p-button p-button-success">Realizar Banca</a>
           </div>
-         
         </div>
         <div class="row">
           <div class="cell">
-            <a href="/App" class="p-button p-button-secondary">Registro de orientações</a>
+            <a href="/orientacoes" class="p-button p-button-secondary">Registro de orientações</a>
           </div>
-          
         </div>
+      
       </div>
     </div>
   </div>

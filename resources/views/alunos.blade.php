@@ -31,6 +31,7 @@
             <td>{{ $aluno->nome }}</td>
             <td>{{ $aluno->matricula }}</td>
             <td>{{ $aluno->orientador ? $aluno->orientador->nome : 'Não atribuído' }}</td>
+
             <td>{{ $aluno->estagio_do_tcc }}</td>
             <td>{{ \Carbon\Carbon::parse($aluno->created_at)->format('d/m/Y ') }}</td>
             <td>

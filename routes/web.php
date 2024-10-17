@@ -16,6 +16,10 @@ use App\Http\Controllers\Auth\OrientadorLoginController;
 use App\Http\Controllers\Controller\Auth;
 use App\Http\Controllers\HomeOrientadorController;
 use App\Http\Controllers\vizualizar_alunoController;
+use App\Http\Controllers\vizualizar_bancaController;
+use App\Http\Controllers\OrientacaoController;
+use App\Http\Controllers\OrientacaoAdminController;
+use App\Http\Middleware;
 
 //Auth::routes()
 // Rota de login
@@ -124,7 +128,17 @@ Route::get('/cadastroOrientador', [CadastroOrientadorController::class, 'showReg
 Route::post('/cadastroOrientador', [CadastroOrientadorController::class, 'cadastroOrientador'])->name('cadastroOrientador');
 
 
-Route::get('/Vizualizar_aluno', [vizualizar_alunoController::class, 'showRegisterForm'])
-    ->name('alunosVizualizar');
+Route::get('/vizualizar_aluno', [vizualizar_alunoController::class, 'showRegisterForm'])
 
-Route::post('/Vizualizar_aluno', [vizualizar_alunoController::class, 'alunos'])->name('alunos');
+   ->name('alunosVizualizar');
+
+
+
+
+   Route::get('/vizualizar_banca', [vizualizar_bancaController::class, 'index'])->name('vizualizar.bancas');
+
+Route::get('/alunos/{aluno}/orientacoes/create', [OrientacaoController::class, 'create'])->name('orientacoes.create');
+Route::post('/orientacoes', [OrientacaoController::class, 'store'])->name('orientacoes.store');
+
+Route::get('/orientacoes', [OrientacaoController::class, 'index'])->name('orientacoes.index');
+Route::get('/Admin', [OrientacaoAdminController::class, 'admin'])->name('Admin');

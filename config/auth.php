@@ -10,17 +10,27 @@ return [
    'guards' => [
     'web' => [
         'driver' => 'session',
-        'provider' => 'users',  // Guard para coordenadores
-   
+        'provider' => 'users',
+    ],
+
+    'orientador' => [
+        'driver' => 'session',
+        'provider' => 'orientadores',
+    ],
 ],
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,  // Model para coordenadores
-        ],
-       
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
     ],
+
+    'orientadores' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Orientador::class, // O Model dos Orientadores
+    ],
+],
+
 
     'passwords' => [
         'users' => [
@@ -34,6 +44,5 @@ return [
 
     'password_timeout' => 10800,
 
-]
 ];
 

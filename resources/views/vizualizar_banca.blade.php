@@ -4,54 +4,58 @@
 <div id="register">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gerenciar Alunos</title>
+    <title>Gerenciar Bancas</title>
     <div class="box">
         <div class="header">
             <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
         </div>
         <div class="toldo">
-            <h2 class="title">Alunos cadastrados no sistema:</h2>
-            <form method="POST" action="{{ route('alunos') }}">
+            <h2 class="title">Bancas cadastradas no sistema:</h2>
+         
                 @csrf
 
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nome Aluno:</th>
-                            <th>Matrícula:</th>
-                            <th>Orientador responsavel:</th>
-                            <th>Estágio do TCC:</th>
-                            <th>Data de Criação:</th>
-                            <th>Ações</th> <!-- Nova coluna para ações -->
+                            <th>Dia da banca</th>
+                            <th>Aluno</th>
+                            <th>Avaliadores</th>
+                            <th>Data de Criação</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-    @foreach($alunos as $aluno)
+    @foreach($bancas as $banca)
         <tr>
-            <td>{{ $aluno->nome }}</td>
-            <td>{{ $aluno->matricula }}</td>
-            <td>{{ $aluno->orientador ? $aluno->orientador->nome : 'Não atribuído' }}</td>
-            <td>{{ $aluno->estagio_do_tcc }}</td>
-            <td>{{ \Carbon\Carbon::parse($aluno->created_at)->format('d/m/Y ') }}</td>
+            <td>{{ \Carbon\Carbon::parse($banca->data_banca)->format('d/m/Y') }}</td>
+            <td>{{ $banca->aluno->nome }}</td>
+            <td>{{ $banca->orientador->nome }}</td>
+            <td>{{ \Carbon\Carbon::parse($banca->created_at)->format('d/m/Y') }}</td>
             <td>
-                <!-- Botão para adicionar uma nova orientação -->
-                <a href="{{ route('orientacoes.create', ['aluno' => $aluno->id]) }}" class="btn btn-primary">
-                    Adicionar Orientação
-                </a>
+                <a href="{{ route('bancas.edit', $banca->id) }}" class="btn btn-warning">Realizar banca</a>
             </td>
         </tr>
     @endforeach
-    </tbody>
+</tbody>
+
+
                 </table>
 
-                <a href="{{ route('homeorientador') }}" class="btn btn-secondary">
-                    Voltar
-                </a>
+                <div class="actions">
+                    <a href="{{ route('registerBanca') }}" class="btn btn-primary">
+                        Adicionar Banca
+                    </a>
+
+                    <a href="{{ route('homeorientador') }}" class="btn btn-secondary">
+                        Voltar
+                    </a>
+                </div>
             </form>
         </div>
     </div>
 </div>
 @endsection
+
 
 <style scoped>
     #register {
@@ -177,26 +181,28 @@
     /* Responsividade para telas menores */
     @media (max-width: 768px) {
         .box {
-            width: 400pxZ; /* Aumenta a largura para telas menores */
+            width: 400px; /* Aumenta a largura para telas menores */
             padding: 50px;
         }
 
         .header {
-            margin-bottom: 700px; /* Espaço maior abaixo do header em telas menores */
+            margin-bottom: 100px; /* Espaço maior abaixo do header em telas menores */
         }
 
         .header img {
-            max-width: 2500px;
+            max-width: 250px;
         }
 
         .title {
-            font-size: 1.2rem;/*  */
+            font-size: 1.2rem;
+            text-align: center;
         }
 
         .table {
             display: block;
             overflow-x: auto; /* Permite rolar horizontalmente em dispositivos móveis */
             white-space: nowrap; /* Impede quebra de linha nas células */
+            text-align: center;
         }
 
         .table thead {
@@ -216,7 +222,7 @@
             display: block;
             text-align: center;
             font-size: 0.9rem;
-            padding: 8px 0;
+            padding: 1px 0;
             border-bottom: 1px solid #e0e0e0;
         }
 

@@ -136,7 +136,7 @@
         </div>
         <div class="row">
           <div class="cell">
-            <a href="/App" class="p-button p-button-secondary">Registro de orientações</a>
+            <a href="/Admin" class="p-button p-button-secondary">Registro de orientações</a>
           </div>
           <div class="cell">
             <a href="/tarefas" class="p-button p-button-secondary">Gerenciar Notas</a>

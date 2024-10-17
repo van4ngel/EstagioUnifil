@@ -11,9 +11,11 @@ use Illuminate\Http\Request;
 
 class vizualizar_alunoController extends Controller
 {
-    public function showRegisterForm()
+    public function showRegisterForm(Request $request)
     {
-        $alunos = Aluno::all();
+        $orientadorId = $request->session()->get('orientador_id'); // Obtém o ID do orientador da sessão
+        $alunos = Aluno::where('orientador_id', $orientadorId)->get(); // Busca os alunos desse orientador
+    
         return view('vizualizar_aluno', compact('alunos'));
     }
-}
+}    

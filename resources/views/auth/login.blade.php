@@ -135,6 +135,7 @@ select {
     justify-content: center;
     align-items: center;
     text-align: center;
+
     background-color: rgba(255, 146, 72, 255);
     color: black;
     transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
