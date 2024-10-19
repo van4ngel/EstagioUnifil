@@ -73,7 +73,15 @@ class RegisterController extends Controller{
     
         return redirect()->route('alunos')->with('success', 'Aluno atualizado com sucesso!');
     }
+    public function delete($id)
+    {
+        $aluno = Aluno::findOrFail($id);
+        $aluno->delete(); // Remove o aluno
     
+        return redirect()->route('alunos')->with('success', 'Aluno excluído com sucesso!');
+    }
+    
+
 
 
 }

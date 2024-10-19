@@ -25,26 +25,25 @@
                         </tr>
                     </thead>
                     <tbody>
-    @foreach($bancas as $banca)
-        <tr>
-            <td>{{ \Carbon\Carbon::parse($banca->data_banca)->format('d/m/Y') }}</td>
-            <td>{{ $banca->aluno->nome }}</td>
-            <td>{{ $banca->orientador->nome }}</td>
-            <td>{{ \Carbon\Carbon::parse($banca->created_at)->format('d/m/Y') }}</td>
-            <td>
-                <a href="{{ route('bancas.edit', $banca->id) }}" class="btn btn-warning">Realizar banca</a>
-            </td>
-        </tr>
-    @endforeach
+                    @foreach($bancas as $banca)
+    <tr>
+        <td>{{ \Carbon\Carbon::parse($banca->data_banca)->format('d/m/Y') }}</td>
+        <td>{{ $banca->aluno->nome }}</td>
+        <td>{{ $banca->orientador->nome }}</td>
+        <td>{{ \Carbon\Carbon::parse($banca->created_at)->format('d/m/Y') }}</td>
+        <td>
+            <a href="{{ route('notas.index', $banca->id) }}" class="btn btn-warning">Realizar banca</a>
+        </td>
+    </tr>
+@endforeach
+
 </tbody>
 
 
                 </table>
 
                 <div class="actions">
-                    <a href="{{ route('registerBanca') }}" class="btn btn-primary">
-                        Adicionar Banca
-                    </a>
+                 
 
                     <a href="{{ route('homeorientador') }}" class="btn btn-secondary">
                         Voltar

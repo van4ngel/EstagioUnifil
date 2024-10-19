@@ -17,30 +17,25 @@
                 <input type="hidden" name="aluno_id" value="{{ $aluno->id }}">
                 
                 <!-- Campo se houve orientação -->
-               
-<div class="form-group">
-    <label for="houve_orientacao">Houve orientação?</label>
-    <select id="houve_orientacao" name="houve_orientacao" class="form-control" required>
-        <option value="sim">Sim</option>
-        <option value="nao">Não</option>
-    </select>
-</div>
+                <div class="form-group">
+                    <label for="houve_orientacao">Houve orientação?</label>
+                    <select id="houve_orientacao" name="houve_orientacao" class="form-control" required>
+                        <option value="sim">Sim</option>
+                        <option value="nao">Não</option>
+                    </select>
+                </div>
 
-
-             
                 <!-- Campo para motivo (se não houve) -->
-<!-- Campo para motivo (se não houve) -->
-<div class="form-group">
-    <label for="motivo_nao_orientacao">Motivo (caso não tenha ocorrido)</label>
-    <input type="text" id="motivo_nao_orientacao" name="motivo_nao_orientacao" class="form-control">
-</div>
+                <div class="form-group">
+                    <label for="motivo_nao_orientacao">Motivo (caso não tenha ocorrido)</label>
+                    <input type="text" id="motivo_nao_orientacao" name="motivo_nao_orientacao" class="form-control">
+                </div>
 
                 <!-- Campo para descrição do que foi feito -->
-        
-<div class="form-group">
-    <label for="descricao_orientacao">Descrição do que foi feito</label>
-    <textarea id="descricao_orientacao" name="descricao_orientacao" class="form-control" rows="4" required></textarea>
-</div>
+                <div class="form-group">
+                    <label for="descricao_orientacao">Descrição do que foi feito</label>
+                    <textarea id="descricao_orientacao" name="descricao_orientacao" class="form-control" rows="4" required></textarea>
+                </div>
 
                 <!-- Campo para data da orientação -->
                 <div class="form-group">
@@ -60,14 +55,12 @@
 </div>
 @endsection
 
-
 <style scoped>
-    #edit {
+    #register {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 100vw;
-        height: 100vh;
+        min-height: 100vh; /* Ocupa toda a altura da tela */
         background-color: #f8f9fa; 
     }
 
@@ -77,8 +70,8 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         width: 100%;
         max-width: 600px;
-        padding: 20px;
-        margin: 0 15px; /* Adicionando margens laterais para responsividade */
+        padding: 30px; /* Aumentando o padding para mais espaço */
+        margin: 20px; /* Adicionando margens laterais para responsividade */
     }
 
     .header {
@@ -86,22 +79,20 @@
         margin-bottom: 20px;
     }
 
-    .header h2 {
+    .header img {
+        max-width: 100%; /* Responsividade da imagem */
+        height: auto;
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 20px;
         font-size: 24px;
         color: #333;
-        margin: 0; /* Removendo margem padrão */
     }
 
-    .toldo {
-        display: flex;
-        flex-direction: column;
-        gap: 20px; /* Aumentando o espaço entre os campos */
-    }
-
-    .p-field {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px; /* Aumentando a margem inferior */
+    .form-group {
+        margin-bottom: 15px; /* Aumentando a margem inferior entre os campos */
     }
 
     label {
@@ -134,31 +125,35 @@
         outline: none;
     }
 
-    .btn-success,
-    .custom-btn {
-        padding: 12px 20px; /* Ajustando o padding para botões */
+    .btn-primary,
+    .btn-secondary {
+        display: block; /* Faz os botões ocuparem toda a largura */
+        width: 100%; /* Para ocupar toda a largura */
+        padding: 12px;
         border: none;
         border-radius: 8px;
         font-size: 16px;
         cursor: pointer;
         text-align: center;
-        background-color: #28a745;
-        color: white;
-        text-decoration: none;
+        margin-top: 10px; /* Espaço entre os botões */
         transition: background-color 0.3s, transform 0.3s;
     }
 
-    .btn-success:hover,
-    .custom-btn:hover {
-        background-color: #218838;
-        transform: translateY(-2px);
+    .btn-primary {
+        background-color: #007bff; /* Cor do botão de registrar */
+        color: white;
     }
 
-    .custom-btn {
-        background-color: #007bff; /* Cor para o botão de voltar */
+    .btn-primary:hover {
+        background-color: #0056b3;
     }
 
-    .custom-btn:hover {
-        background-color: #0056b3; /* Cor para hover do botão de voltar */
+    .btn-secondary {
+        background-color: #6c757d; /* Cor do botão de voltar */
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
     }
 </style>

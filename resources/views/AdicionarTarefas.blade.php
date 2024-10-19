@@ -106,99 +106,108 @@
         align-items: center;
         width: 100vw;
         height: 100vh;
-        padding: 20px;
-        box-sizing: border-box;
     }
 
     .box {
-        width: 100%;
-        max-width: 600px;
-        background-color: #fff;
-        border-radius: 10px;
+        width: 90%; /* Aumenta a largura da caixa em dispositivos móveis */
+        max-width: 600px; /* Define uma largura máxima */
         padding: 20px;
+        border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
     }
 
     .header {
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 40px; /* Reduz o espaço inferior da imagem */
     }
 
     .header img {
         width: 100%;
-        max-width: 300px;
+        max-width: 300px; /* Ajusta o tamanho máximo da imagem */
     }
 
     .toldo {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 15px; /* Reduz o espaço entre os campos */
     }
 
     .p-field {
         display: flex;
         flex-direction: column;
-        gap: 10px;
     }
 
     label {
-        margin-bottom: 5px;
-        font-size: 18px;
+        margin-bottom: 5px; /* Reduz a margem inferior dos labels */
+        font-size: 16px; /* Mantém um tamanho de fonte razoável */
     }
 
     input[type="text"],
-    input[type="date"],
-    input[type="url"] {
+    select {
         width: 100%;
-        padding: 12px;
-        font-size: 18px;
-        margin-bottom: 10px;
-        border-radius: 10px;
+        padding: 8px; /* Reduz o preenchimento interno do campo */
+        font-size: 14px; /* Diminui o tamanho da fonte */
+        margin-bottom: 5px;
+        border-radius: 8px; /* Arredonda os cantos dos campos */
         border: 1px solid #ddd;
-        box-sizing: border-box;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+        border-color: rgba(255, 146, 72, 255);
+        box-shadow: 0 0 4px rgba(255, 146, 72, 0.3);
+        outline: none; /* Remove a borda padrão ao focar */
     }
 
     .p-button,
     .custom-btn {
-        padding: 10px;
+        padding: 8px; /* Reduz o preenchimento interno dos botões */
         border: none;
-        border-radius: 10px;
-        font-size: 18px;
+        border-radius: 8px; /* Arredonda os cantos dos botões */
+        font-size: 16px; /* Diminui o tamanho da fonte dos botões */
         cursor: pointer;
-        margin-top: 20px;
+        margin-top: 20px; /* Mantém um espaço acima dos botões */
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
-        background-color: rgba(255, 146, 72, 1);
-        color: #fff;
+        background-color: rgba(255, 146, 72, 255);
+        color: black;
         text-decoration: none;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
     }
 
     .p-button:hover,
     .custom-btn:hover {
-        transform: translateY(-2px);
-        background-color: rgba(255, 146, 72, 0.8);
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-1px); /* Diminui a elevação ao passar o mouse */
+        background-color: rgba(255, 146, 72, 255);
+        color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .invalid-feedback {
-        color: #e74c3c;
-        font-size: 14px;
+        color: #e3342f; /* Cor do texto de erro */
+        font-size: 14px; /* Mantém um tamanho de fonte adequado para erros */
         margin-top: 5px;
     }
 
     @media (max-width: 768px) {
         .box {
-            width: 90%;
-            padding: 15px;
+            width: 95%; /* Ajusta a largura da caixa em telas menores */
+            padding: 15px; /* Reduz o preenchimento interno */
         }
 
         .header img {
-            max-width: 250px;
+            max-width: 250px; /* Ajusta o tamanho máximo da imagem */
+        }
+
+        .p-button,
+        .custom-btn {
+            font-size: 14px; /* Diminui o tamanho da fonte dos botões em dispositivos móveis */
         }
     }
 </style>

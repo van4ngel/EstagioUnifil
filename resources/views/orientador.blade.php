@@ -4,14 +4,13 @@
 <div id="register">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gerenciar Orientador</title>
+    <title>Gerenciar Orientadores</title>
     <div class="box">
         <div class="header">
             <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
         </div>
         <div class="toldo">
             <h2 style="text-align: center;">Orientadores cadastrados:</h2>
-            
             <table class="table">
                 <thead>
                     <tr>
@@ -19,51 +18,51 @@
                         <th>Matrícula:</th>
                         <th>Alunos:</th>
                         <th>Data de Criação:</th>
-                        <th>Ações:</th> <!-- Nova coluna para ações -->
+                        <th>Ações:</th>
                     </tr>
                 </thead>
                 <tbody>
-    @foreach($orientadores as $orientador)
-        <tr>
-            <td>{{ $orientador->nome }}</td>
-            <td>{{ $orientador->matricula }}</td>
-            <td>
-                <div class="aluno-lista">
-                    @if($orientador->alunos->isEmpty())
-                        <div class="aluno-item">Nenhum aluno atribuído</div>
-                    @else
-                        @foreach($orientador->alunos as $aluno)
-                            <div class="aluno-item">{{ $aluno->nome }} (Matrícula: {{ $aluno->matricula }})</div>
-                        @endforeach
-                    @endif
-                </div>
-            </td>
-            <td>{{ \Carbon\Carbon::parse($orientador->created_at)->format('d/m/Y') }}</td>
-            <td>
-                <!-- Botão para modificar o orientador -->
-                <a href="{{ route('orientadores.edit', $orientador->id) }}" class="btn btn-warning">
-                    Modificar
-                </a>
-            </td>
-        </tr>
-    @endforeach
-</tbody>
+                    @foreach($orientadores as $orientador)
+                    <tr>
+                        <td>{{ $orientador->nome }}</td>
+                        <td>{{ $orientador->matricula }}</td>
+                        <td>
+                            <div class="aluno-lista">
+                                @if($orientador->alunos->isEmpty())
+                                    <div class="aluno-item">Nenhum aluno atribuído</div>
+                                @else
+                                    @foreach($orientador->alunos as $aluno)
+                                        <div class="aluno-item">{{ $aluno->nome }} (Matrícula: {{ $aluno->matricula }})</div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </td>
+                        <td>{{ \Carbon\Carbon::parse($orientador->created_at)->format('d/m/Y') }}</td>
+                        <td>
+                            <a href="{{ route('orientadores.edit', $orientador->id) }}" class="btn btn-warning">Modificar</a>
 
+                      
+                            <form action="{{ route('orientadores.delete', $orientador->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este orientador?')">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
             </table>
 
             <div class="actions">
-                <a href="{{ route('registerOrientador') }}" class="btn btn-primary">
-                    Adicionar Orientador
-                </a>
-
-                <a href="{{ route('pagina_inicial') }}" class="btn btn-secondary">
-                    Voltar
-                </a>
+                <a href="{{ route('registerOrientador') }}" class="btn btn-primary">Adicionar Orientador</a>
+                <a href="{{ route('pagina_inicial') }}" class="btn btn-secondary">Voltar</a>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+
 
 <style scoped>
     #register {

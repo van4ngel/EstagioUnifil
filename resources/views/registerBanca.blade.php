@@ -15,7 +15,6 @@
             <form method="POST" action="{{ route('registerBanca') }}">
                 @csrf
 
-           
                 <div class="p-field">
                     <label for="aluno_id">Aluno:</label>
                     <select id="aluno_id" class="form-control @error('aluno_id') is-invalid @enderror" name="aluno_id" required>
@@ -49,27 +48,29 @@
                     </span>
                     @enderror
                 </div>
-             <div class="p-field">
-    <label for="data_banca">Data da Banca:</label>
-    <input 
-        type="date" 
-        id="data_banca" 
-        class="form-control @error('data_banca') is-invalid @enderror" 
-        name="data_banca" 
-        value="{{ old('data_banca') }}" 
-        required
-    >
-    @error('data_banca')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
+             
                 <div class="p-field">
-                    <button type="submit" class="p-button p-button-success custom-btn">
+                    <label for="data_banca">Data da Banca:</label>
+                    <input 
+                        type="date" 
+                        id="data_banca" 
+                        class="form-control @error('data_banca') is-invalid @enderror" 
+                        name="data_banca" 
+                        value="{{ old('data_banca') }}" 
+                        required
+                    >
+                    @error('data_banca')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                
+                <div class="p-field">
+                    <button type="submit" class="custom-btn">
                         Registrar
                     </button>
-                    <a href="{{ route('bancas') }}" class="p-button p-button-success custom-btn">
+                    <a href="{{ route('bancas') }}" class="custom-btn">
                         Voltar
                     </a>
                 </div>
@@ -91,29 +92,29 @@
     }
 
     .box {
-        width: 80%;
-        max-width: 800px; /* Define um limite máximo de largura para a caixa */
+        width: 90%; /* Aumenta a largura em dispositivos menores */
+        max-width: 600px; /* Limita a largura máxima da caixa */
         margin: 0 auto;
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         background-color: #fff;
     }
 
     .header {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 
     .header img {
         width: 100%;
-        max-width: 300px; /* Ajusta o tamanho máximo da imagem */
+        max-width: 250px; /* Ajusta o tamanho máximo da imagem */
     }
 
     .toldo {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 15px; /* Espaçamento menor entre os campos */
     }
 
     .p-field {
@@ -122,110 +123,67 @@
     }
 
     label {
-        margin-bottom: 8px;
-        font-size: 16px; /* Aumenta o tamanho da fonte dos labels */
+        margin-bottom: 5px; /* Reduz a margem inferior dos rótulos */
+        font-size: 14px; /* Tamanho da fonte dos labels */
     }
 
     input[type="date"],
     select {
         width: 100%;
-        padding: 12px;
-        font-size: 16px;
+        padding: 10px; /* Reduz o padding dos campos */
+        font-size: 14px;
         margin-bottom: 10px;
-        border-radius: 8px;
-        border: 2px solid #ddd;
+        border-radius: 5px;
+        border: 1px solid #ddd;
         background-color: #fafafa;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: border-color 0.3s, box-shadow 0.3s;
     }
 
-    .p-button,
     .custom-btn {
-        padding: 12px;
+        padding: 8px 12px; /* Reduz o padding dos botões */
         border: none;
-        border-radius: 8px;
-        font-size: 18px;
+        border-radius: 5px;
+        font-size: 14px; /* Tamanho da fonte do botão */
         cursor: pointer;
-        margin-top: 20px;
+        margin-top: 10px; /* Margem superior menor */
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
-        background-color: rgba(255, 146, 72, 255);
-        color: black;
+        background-color: rgba(255, 146, 72, 1);
+        color: white; /* Alterado para branco para melhor contraste */
         text-decoration: none;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
     }
 
-    .p-button:hover,
     .custom-btn:hover {
-        transform: translateY(-2px);
-        background-color: rgba(255, 146, 72, 255);
-        color: white;
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-1px);
+        background-color: rgba(255, 146, 72, 0.9);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
 
     .invalid-feedback {
         color: #e3342f; /* Cor do texto de erro */
-        font-size: 16px; /* Aumenta o tamanho da fonte do texto de erro */
+        font-size: 14px; /* Tamanho da fonte do texto de erro */
         margin-top: 5px;
     }
 
     .form-control:focus {
-        border-color: rgba(255, 146, 72, 255);
-        box-shadow: 0 0 8px rgba(255, 146, 72, 0.3);
+        border-color: rgba(255, 146, 72, 1);
+        box-shadow: 0 0 5px rgba(255, 146, 72, 0.3);
         outline: none;
-    }
-
-    .select-container {
-        position: relative;
-        display: inline-block;
-        width: 100%;
-    }
-
-    .select-container select.form-control {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        border-radius: 8px;
-        border: 2px solid #ddd;
-        background-color: #fafafa;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        appearance: none; /* Remove a seta padrão do navegador */
-        transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .select-container select.form-control:focus {
-        border-color: rgba(255, 146, 72, 255);
-        box-shadow: 0 0 8px rgba(255, 146, 72, 0.3);
-        outline: none;
-    }
-
-    .select-icon {
-        position: absolute;
-        top: 50%;
-        right: 10px;
-        transform: translateY(-50%);
-        font-size: 18px;
-        color: #333;
-        pointer-events: none; /* Faz com que a seta não interfira na seleção */
     }
 
     @media (max-width: 768px) {
         .box {
-            width: 100%;
+            width: 95%; /* Aumenta a largura em dispositivos menores */
             padding: 15px;
         }
 
         .header img {
-            max-width: 250px;
-        }
-
-        .p-button,
-        .custom-btn {
-            font-size: 16px;
+            max-width: 200px; /* Ajusta o tamanho máximo da imagem */
         }
     }
 </style>

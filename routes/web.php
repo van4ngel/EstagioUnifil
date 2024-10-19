@@ -19,13 +19,24 @@ use App\Http\Controllers\vizualizar_alunoController;
 use App\Http\Controllers\vizualizar_bancaController;
 use App\Http\Controllers\OrientacaoController;
 use App\Http\Controllers\OrientacaoAdminController;
+use App\Http\Controllers\BancaController;
+use App\Http\Controllers\NotaController;
+
 use App\Http\Middleware;
 
 //Auth::routes()
 // Rota de login
+
+
 Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'loginteste'])->name('login.submit');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::delete('/orientadores/{id}', [OriController::class, 'delete'])->name('orientadores.delete');
+
+Route::delete('/bancas/{id}', [BancasController::class, 'delete'])->name('bancas.delete');
+
+Route::delete('/alunos/{id}', [RegisterController::class, 'delete'])->name('alunos.delete');
 
 // Rotas para login do orientador
 Route::get('/loginOrientador', [OrientadorLoginController::class, 'showLoginForm'])->name('login.orientador');
@@ -141,4 +152,17 @@ Route::get('/alunos/{aluno}/orientacoes/create', [OrientacaoController::class, '
 Route::post('/orientacoes', [OrientacaoController::class, 'store'])->name('orientacoes.store');
 
 Route::get('/orientacoes', [OrientacaoController::class, 'index'])->name('orientacoes.index');
-Route::get('/Admin', [OrientacaoAdminController::class, 'admin'])->name('Admin');
+
+Route::get('/Admin', [OrientacaoAdminController::class, 'admin'])
+    ->name('Admin')
+    ->middleware('auth');
+
+
+
+Route::get('/notas/listar', [NotaController::class, 'listarNotas'])->name('notas.listar')
+->middleware('auth');
+
+Route::get('/notas/{bancaId}', [NotaController::class, 'index'])->name('notas.index');
+
+Route::get('/notas/create/{bancaId}', [NotaController::class, 'create'])->name('notas.create');
+Route::post('/notas', [NotaController::class, 'store'])->name('notas.store');

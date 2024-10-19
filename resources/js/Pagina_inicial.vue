@@ -139,7 +139,7 @@
             <a href="/Admin" class="p-button p-button-secondary">Registro de orientações</a>
           </div>
           <div class="cell">
-            <a href="/tarefas" class="p-button p-button-secondary">Gerenciar Notas</a>
+            <a href="/notas/listar" class="p-button p-button-secondary">Gerenciar Notas</a>
           </div>
         </div>
       </div>

@@ -11,55 +11,51 @@
         </div>
         <div class="toldo">
             <h2 class="title">Alunos cadastrados no sistema:</h2>
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome Aluno:</th>
+                        <th>Matrícula:</th>
+                        <th>Orientador responsável:</th>
+                        <th>Estágio do TCC:</th>
+                        <th>Data de Criação:</th>
+                        <th>Ações:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($alunos as $aluno)
+                    <tr>
+                        <td>{{ $aluno->nome }}</td>
+                        <td>{{ $aluno->matricula }}</td>
+                        <td>{{ $aluno->orientador ? $aluno->orientador->nome : 'Não atribuído' }}</td>
+                        <td>{{ $aluno->estagio_do_tcc }}</td>
+                        <td>{{ \Carbon\Carbon::parse($aluno->created_at)->format('d/m/Y') }}</td>
+                        <td>
+                            <!-- Botão para modificar o aluno -->
+                            <a href="{{ route('alunos.edit', $aluno->id) }}" class="btn btn-warning">Modificar</a>
+                            
+                            <!-- Formulário para excluir o aluno -->
+                            <form action="{{ route('alunos.delete', $aluno->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este aluno?')">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nome Aluno:</th>
-                            <th>Matrícula:</th>
-                            <th>Orientador responsavel:</th>
-                            <th>Estágio do TCC:</th>
-                            <th>Data de Criação:</th>
-                            <th>Ações:</th> <!-- Coluna para ações -->
-                        </tr>
-                    </thead>
-                    <tbody>
-    @foreach($alunos as $aluno)
-        <tr>
-            <td>{{ $aluno->nome }}</td>
-            <td>{{ $aluno->matricula }}</td>
-            <td>{{ $aluno->orientador ? $aluno->orientador->nome : 'Não atribuído' }}</td>
-
-            <td>{{ $aluno->estagio_do_tcc }}</td>
-            <td>{{ \Carbon\Carbon::parse($aluno->created_at)->format('d/m/Y ') }}</td>
-            <td>
-                <!-- Botão para modificar o aluno -->
-                <a href="{{ route('alunos.edit', $aluno->id) }}" class="btn btn-warning">
-                    Modificar
-                </a>
-            </td>
-        </tr>
-    @endforeach
-</tbody>
-
-                </table>
-
-                <div class="actions">
-                    <a href="{{ route('register') }}" class="btn btn-primary">
-                        Adicionar Aluno
-                    </a>
-
-                    <a href="{{ route('pagina_inicial') }}" class="btn btn-secondary">
-                        Voltar
-                    </a>
-                </div>
-            </form>
+            <div class="actions">
+                <a href="{{ route('register') }}" class="btn btn-primary">Adicionar Aluno</a>
+                <a href="{{ route('pagina_inicial') }}" class="btn btn-secondary">Voltar</a>
+            </div>
         </div>
     </div>
 </div>
 @endsection
+
+
 
 <style scoped>
     #register {

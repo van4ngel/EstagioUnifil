@@ -30,15 +30,15 @@ class OriController extends Controller
     {
         $validated = $request->validate([
             'nome' => 'required|string|max:255',
-            'email' => 'required|string|max:255|unique:orientadores', // Mude de 'matricula' para 'email'
+            'email' => 'required|string|max:255|unique:orientadores', 
         ]);
 
         $orientador = new Orientador();
         $orientador->nome = $validated['nome'];
-        $orientador->email = $validated['email']; // Armazena o email
+        $orientador->email = $validated['email']; 
         $orientador->save();
 
-        return redirect()->back()->with('success', 'Orientador registrado com sucesso!');
+        return redirect()->route('orientador')->with('success', 'Orientador atualizado com sucesso!');
     }
 
     public function edit($id)
@@ -51,12 +51,20 @@ class OriController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:255',
-            'email' => 'required|string|max:255', // Mude de 'matricula' para 'email'
+            'email' => 'required|string|max:255', 
         ]);
 
         $orientador = Orientador::findOrFail($id);
-        $orientador->update($request->only(['nome', 'email'])); // Atualiza apenas os campos permitidos
+        $orientador->update($request->only(['nome', 'email'])); 
 
         return redirect()->route('orientador')->with('success', 'Orientador atualizado com sucesso!');
     }
+    public function delete($id)
+    {
+        $orientador = Orientador::findOrFail($id);
+        $orientador->delete(); // Remove o orientador
+    
+        return redirect()->route('orientador')->with('success', 'Orientador excluído com sucesso!');
+    }
+    
 }

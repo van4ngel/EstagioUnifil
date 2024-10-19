@@ -11,6 +11,7 @@ use App\Models\Banca;
 class BancasController extends Controller
 {
 
+
     public function index()
     {
         $bancas = Banca::with('aluno', 'orientador')->get();
@@ -49,4 +50,12 @@ class BancasController extends Controller
 
         return redirect()->route('bancas')->with('success', 'Banca atualizada com sucesso!');
     }
+    public function delete($id)
+    {
+        $banca = Banca::findOrFail($id);
+        $banca->delete(); // Remove a banca
+    
+        return redirect()->route('bancas')->with('success', 'Banca excluída com sucesso!');
+    }
+    
 }

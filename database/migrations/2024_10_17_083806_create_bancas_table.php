@@ -13,13 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bancas', function (Blueprint $table) {
-            $table->id(); // Coluna de ID
-            $table->foreignId('aluno_id')->constrained()->onDelete('cascade'); // Chave estrangeira para alunos
-            $table->foreignId('orientador_id')->constrained()->onDelete('cascade'); // Chave estrangeira para orientadores
-            $table->date('data_banca'); // Coluna para a data da banca
-            $table->timestamps(); // Colunas para created_at e updated_at
-        });
+        // Verifica se a tabela já existe
+        if (!Schema::hasTable('bancas')) {
+            Schema::create('bancas', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('aluno_id');
+                $table->unsignedBigInteger('orientador_id');
+                $table->date('data_banca');
+                $table->timestamps();
+                
+                // Definir as chaves estrangeiras
+                $table->foreign('aluno_id')->references('id')->on('alunos')->onDelete('cascade');
+                $table->foreign('orientador_id')->references('id')->on('orientadores')->onDelete('cascade');
+            });
+        }
     }
 
     /**

@@ -25,36 +25,37 @@
                         </tr>
                     </thead>
                     <tbody>
-    @foreach($bancas as $banca)
-        <tr>
-            <td>{{ \Carbon\Carbon::parse($banca->data_banca)->format('d/m/Y') }}</td>
-            <td>{{ $banca->aluno->nome }}</td>
-            <td>{{ $banca->orientador->nome }}</td>
-            <td>{{ \Carbon\Carbon::parse($banca->created_at)->format('d/m/Y') }}</td>
-            <td>
-                <a href="{{ route('bancas.edit', $banca->id) }}" class="btn btn-warning">Modificar</a>
-            </td>
-        </tr>
-    @endforeach
-</tbody>
-
-
+                        @foreach($bancas as $banca)
+                            <tr>
+                                <td>{{ \Carbon\Carbon::parse($banca->data_banca)->format('d/m/Y') }}</td>
+                                <td>{{ $banca->aluno->nome }}</td>
+                                <td>{{ $banca->orientador->nome }}</td>
+                                <td>{{ \Carbon\Carbon::parse($banca->created_at)->format('d/m/Y') }}</td>
+                                <td>
+                                    <a href="{{ route('bancas.edit', $banca->id) }}" class="btn btn-warning">Modificar</a>
+                                    
+                                    <!-- Formulário para excluir a banca -->
+                                    <form action="{{ route('bancas.delete', $banca->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta banca?')">Excluir</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
 
                 <div class="actions">
-                    <a href="{{ route('registerBanca') }}" class="btn btn-primary">
-                        Adicionar Banca
-                    </a>
-
-                    <a href="{{ route('pagina_inicial') }}" class="btn btn-secondary">
-                        Voltar
-                    </a>
+                    <a href="{{ route('registerBanca') }}" class="btn btn-primary">Adicionar Banca</a>
+                    <a href="{{ route('pagina_inicial') }}" class="btn btn-secondary">Voltar</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
 @endsection
+
 
 
 <style scoped>
