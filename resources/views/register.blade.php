@@ -15,7 +15,7 @@
 
                 <div class="p-field">
                     <h3 style="text-align: center;">Preencha as informações abaixo para registrar um novo aluno:</h3>
-                    <label for="nome">Nome completo do aluno:</label>
+                    <label for="nome">Nome completo do aluno*:</label>
                     <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autofocus>
                     @error('nome')
                     <span class="invalid-feedback" role="alert">
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="p-field">
-                    <label for="matricula">Matrícula:</label>
+                    <label for="matricula">Matrícula*:</label>
                     <input id="matricula" type="text" class="form-control @error('matricula') is-invalid @enderror" name="matricula" value="{{ old('matricula') }}" required>
                     @error('matricula')
                     <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="p-field">
-                    <label for="orientador_id">Orientador responsável:</label>
+                    <label for="orientador_id">Orientador responsável*:</label>
                     <select id="orientador_id" class="form-control @error('orientador_id') is-invalid @enderror" name="orientador_id" required>
                         <option value="">Selecione um orientador</option>
                         @foreach($orientadores as $orientador)
@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="p-field">
-                    <label for="estagio_do_tcc">Estágio do TCC que o aluno se encontra:</label>
+                    <label for="estagio_do_tcc">Estágio do TCC que o aluno se encontra*:</label>
                     <select id="estagio_do_tcc" class="form-control @error('estagio_do_tcc') is-invalid @enderror" name="estagio_do_tcc" required>
                         <option value="">Selecione uma opção</option>
                         <option value="1">Estágio 1</option>

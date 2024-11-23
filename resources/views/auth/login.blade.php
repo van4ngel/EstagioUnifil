@@ -14,10 +14,16 @@
             <form method="POST" action="{{ route('login.submit') }}">
                 @csrf
 
-                
+                <!-- Exibir erro global de login -->
+                @if ($errors->has('login'))
+                    <div class="alert alert-danger">
+                        <strong>{{ $errors->first('login') }}</strong>
+                    </div>
+                @endif
+
                 <div class="p-field">
                     <h2 style="text-align: center;">Preencha as informações abaixo para acessar o portal:</h2>
-                    <label for="email">Matricula:</label>
+                    <label for="email">Matrícula:</label>
                     <br>
                     <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus>
                     @error('email')
@@ -39,28 +45,29 @@
                 </div>
 
                 <div class="p-field">
-    <!-- Botão para "Entrar" -->
-    <button type="submit" class="p-button p-button-success">
-        Entrar
-    </button>
+                    <!-- Botão para "Entrar" -->
+                    <button type="submit" class="p-button p-button-success">
+                        Entrar
+                    </button>
 
-    <!-- Texto com link para cadastro -->
-    <div class="register-link">
-        Não tem conta? 
-        <a href="{{ route('cadastroOrientador') }}" class="cadastro-link">Faça seu cadastro</a>
-    </div>
+                    <!-- Texto com link para cadastro -->
+                    <div class="register-link">
+                        Não tem conta? 
+                        <a href="{{ route('cadastroOrientador') }}" class="cadastro-link">Faça seu cadastro</a>
+                    </div>
 
-    <div class="register-link">
-        Se voce for um orientador e ja tem conta
-        <a href="{{ route('login.orientador') }}" class="cadastro-link">faça seu login por aqui</a>
-    </div>
+                    <div class="register-link">
+                        Se você for um orientador e já tem conta,
+                        <a href="{{ route('login.orientador') }}" class="cadastro-link">faça seu login por aqui</a>
+                    </div>
+                </div>
             </form>
-
         </div>
     </div>
 </div>
 
 @endsection
+
 
 <style scoped>
 

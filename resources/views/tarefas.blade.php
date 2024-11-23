@@ -37,7 +37,14 @@
                         @foreach($tarefas as $tarefa)
                             <tr>
                                 <td>{{ $tarefa->tema }}</td>
-                                <td>{{ $tarefa->estagio }}</td>
+                                <td>
+    @if($tarefa->estagio <= 4)
+        {{ $tarefa->estagio }}  <!-- Exibe o número do estágio até 4 -->
+    @else
+        Até o número 4  <!-- Exibe "Até o número 4" caso o valor seja maior que 4 -->
+    @endif
+</td>
+
                                 <td>{{ \Carbon\Carbon::parse($tarefa->data_entrega)->format('d/m/Y') }}</td>
 
                                 <td>

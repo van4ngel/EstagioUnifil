@@ -119,11 +119,12 @@
     <div class="container">
       <div class="table">
         <div class="row">
-          <div class="cell">
-            <a href="/alunos" class="p-button p-button-success">Gerenciar Aluno</a>
-          </div>
+         
           <div class="cell">
             <a href="/orientador" class="p-button p-button-secondary">Gerenciar Orientador</a>
+          </div>
+          <div class="cell">
+            <a href="/alunos" class="p-button p-button-success">Gerenciar Aluno</a>
           </div>
         </div>
         <div class="row">

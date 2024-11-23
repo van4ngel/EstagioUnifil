@@ -22,4 +22,6 @@ class Orientacao extends Model
     {
         return $this->belongsTo(Orientador::class);
     }
+
+   
 }

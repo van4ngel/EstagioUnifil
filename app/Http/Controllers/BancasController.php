@@ -57,5 +57,7 @@ class BancasController extends Controller
     
         return redirect()->route('bancas')->with('success', 'Banca excluída com sucesso!');
     }
+   
+    
     
 }

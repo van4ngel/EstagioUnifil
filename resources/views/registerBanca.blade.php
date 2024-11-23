@@ -16,7 +16,7 @@
                 @csrf
 
                 <div class="p-field">
-                    <label for="aluno_id">Aluno:</label>
+                    <label for="aluno_id">Aluno*:</label>
                     <select id="aluno_id" class="form-control @error('aluno_id') is-invalid @enderror" name="aluno_id" required>
                         <option value="">Selecione um Aluno</option>
                         @foreach($alunos as $aluno)
@@ -33,12 +33,12 @@
                 </div>
 
                 <div class="p-field">
-                    <label for="orientador_id">Avaliadores da banca:</label>
+                    <label for="orientador_id">Avaliadores da banca*:</label>
                     <select id="orientador_id" class="form-control @error('orientador_id') is-invalid @enderror" name="orientador_id" required>
                         <option value="">Selecione um Avaliador</option>
                         @foreach($orientadores as $orientador)
                             <option value="{{ $orientador->id }}" {{ old('orientador_id') == $orientador->id ? 'selected' : '' }}>
-                                {{ $orientador->nome }} (Matrícula: {{ $orientador->matricula }})
+                                {{ $orientador->nome }} (Matrícula: {{ $orientador->email }})
                             </option>
                         @endforeach
                     </select>
@@ -50,7 +50,7 @@
                 </div>
              
                 <div class="p-field">
-                    <label for="data_banca">Data da Banca:</label>
+                    <label for="data_banca">Data da Banca*:</label>
                     <input 
                         type="date" 
                         id="data_banca" 

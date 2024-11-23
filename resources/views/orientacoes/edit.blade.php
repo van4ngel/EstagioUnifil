@@ -1,59 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="register">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registrar Orientação</title>
-    <div class="box">
-        <div class="header">
-            <img src="https://web.unifil.br/eventos/intercursos/imagens/logo-menu.png" alt="Header Image">
+<div class="container">
+<title>Editar Orientação</title>
+
+    <h1 class="my-4 text-center">Editar Orientação</h1>
+
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
         </div>
-        <div class="toldo">
-            <h2 class="title">Registrar nova Orientação</h2>
+    @endif
 
-            <form method="POST" action="{{ route('orientacoes.store') }}">
-                @csrf
-                <input type="hidden" name="aluno_id" value="{{ $aluno->id }}">
-                
-                <!-- Campo se houve orientação -->
-                <div class="form-group">
-                    <label for="houve_orientacao">Houve orientação?*</label>
-                    <select id="houve_orientacao" name="houve_orientacao" class="form-control" required>
-                        <option value="sim">Sim</option>
-                        <option value="nao">Não</option>
-                    </select>
-                </div>
+    <!-- Formulário para editar a orientação -->
+    <form action="{{ route('orientacoes.update', $orientacao->id) }}" method="POST">
+        @csrf
+        @method('PUT')
 
-                <!-- Campo para motivo (se não houve) -->
-                <div class="form-group">
-                    <label for="motivo_nao_orientacao">Motivo (caso não tenha ocorrido)</label>
-                    <input type="text" id="motivo_nao_orientacao" name="motivo_nao_orientacao" class="form-control">
-                </div>
-
-                <!-- Campo para descrição do que foi feito -->
-                <div class="form-group">
-                    <label for="descricao_orientacao">Descrição do que foi feito*</label>
-                    <textarea id="descricao_orientacao" name="descricao_orientacao" class="form-control" rows="4" required></textarea>
-                </div>
-
-                <!-- Campo para data da orientação -->
-                <div class="form-group">
-                    <label for="data_orientacao">Data da orientação*</label>
-                    <input type="date" id="data_orientacao" name="data_orientacao" class="form-control" required>
-                </div>
-
-                <!-- Botão para submeter -->
-                <button type="submit" class="btn btn-primary">Registrar Orientação</button>
-            </form>
-
-            <a href="{{ route('homeorientador') }}" class="btn btn-secondary">
-                Voltar
-            </a>
+        <div class="mb-3">
+            <label for="houve_orientacao" class="form-label">Houve Orientação?*</label>
+            <select id="houve_orientacao" name="houve_orientacao" class="form-control" required>
+                <option value="sim" {{ $orientacao->houve_orientacao ? 'selected' : '' }}>Sim</option>
+                <option value="nao" {{ !$orientacao->houve_orientacao ? 'selected' : '' }}>Não</option>
+            </select>
         </div>
+
+        <div class="mb-3">
+            <label for="motivo_nao_orientacao" class="form-label">Motivo (se não houve orientação)</label>
+            <input type="text" id="motivo_nao_orientacao" name="motivo_nao_orientacao" class="form-control" value="{{ $orientacao->motivo_nao_orientacao }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="descricao_orientacao" class="form-label">Descrição da Orientação*</label>
+            <textarea id="descricao_orientacao" name="descricao_orientacao" class="form-control" rows="4" required>{{ $orientacao->descricao_orientacao }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="data_orientacao" class="form-label">Data da Orientação*</label>
+            <input type="date" id="data_orientacao" name="data_orientacao" class="form-control" value="{{ \Carbon\Carbon::parse($orientacao->data_orientacao)->format('Y-m-d') }}" required>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Atualizar Orientação</button>
+        </div>
+    </form>
+
+    <div class="text-center my-4">
+        <a href="{{ route('orientacoes.index') }}" class="btn btn-secondary">Voltar</a>
     </div>
 </div>
 @endsection
+
 
 <style scoped>
     #register {

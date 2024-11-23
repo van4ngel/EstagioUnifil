@@ -13,4 +13,14 @@ class AlunosController extends Controller
         $alunos = Aluno::all();
         return view('alunos', compact('alunos'));
     }
+
+
+
+    public function index()
+    {
+        // Obtém todos os alunos para exibição na tela
+        $alunos = Aluno::all();
+        return view('alunos.alunos', compact('alunos'));
+    }
 }
+

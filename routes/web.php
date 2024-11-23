@@ -22,6 +22,7 @@ use App\Http\Controllers\OrientacaoAdminController;
 use App\Http\Controllers\BancaController;
 use App\Http\Controllers\NotaController;
 
+
 use App\Http\Middleware;
 
 //Auth::routes()
@@ -74,6 +75,7 @@ Route::get('/alunos', [AlunosController::class, 'showRegisterForm'])
 
 Route::post('/alunos', [AlunosController::class, 'alunos'])->name('alunos');
 
+///////////
 Route::get('/alunos/{id}/edit', [RegisterController::class, 'edit'])->name('alunos.edit');
 
 Route::put('/alunos/{id}', [RegisterController::class, 'update'])->name('alunos.update');
@@ -86,6 +88,7 @@ Route::get('/orientador', [OrientadoresController::class, 'showRegisterForm'])
 Route::post('/orientador', [OrientadoresController::class, 'orientador'])->name('orientador');
 
 Route::get('/orientadores/{id}/edit', [OriController::class, 'edit'])->name('orientadores.edit');
+
 Route::put('/orientadores/{id}', [OriController::class, 'update'])->name('orientadores.update');
 
 // Exibe o formulário de bancas
@@ -166,3 +169,22 @@ Route::get('/notas/{bancaId}', [NotaController::class, 'index'])->name('notas.in
 
 Route::get('/notas/create/{bancaId}', [NotaController::class, 'create'])->name('notas.create');
 Route::post('/notas', [NotaController::class, 'store'])->name('notas.store');
+
+
+
+
+// Rota para exibir o formulário de edição da orientação (método GET)
+Route::get('/orientacoes/{orientacao}/edit', [OrientacaoController::class, 'edit'])->name('orientacoes.edit');
+
+// Rota para atualizar a orientação (método PUT)
+Route::put('/orientacoes/{orientacao}', [OrientacaoController::class, 'update'])->name('orientacoes.update');
+
+//Route::get('/alunos', [AlunosController::class, 'index'])->name('alunos.alunos');
+
+Route::get('/orientacoes/create/{aluno}', [Orientacao2Controller::class, 'create'])->name('coordenador.orientacoes.create');
+
+Route::get('notas/{nota}/edit', [NotaController::class, 'edit'])->name('notas.edit');
+Route::put('notas/{nota}', [NotaController::class, 'update'])->name('notas.update');
+
+// Excluir banca
+

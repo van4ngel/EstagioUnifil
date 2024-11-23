@@ -25,7 +25,7 @@
                     @foreach($orientadores as $orientador)
                     <tr>
                         <td>{{ $orientador->nome }}</td>
-                        <td>{{ $orientador->matricula }}</td>
+                        <td>{{ $orientador->email }}</td>
                         <td>
                             <div class="aluno-lista">
                                 @if($orientador->alunos->isEmpty())

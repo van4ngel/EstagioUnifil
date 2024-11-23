@@ -15,7 +15,7 @@
 
                 <div class="p-field">
                     <h3 style="text-align: center;">Preencha as informações abaixo para registrar um novo Orientador:</h3>
-                    <label for="nome">Nome completo do Orientador:</label>
+                    <label for="nome">Nome completo do Orientador*:</label>
                     <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autofocus>
                     @error('nome')
                     <span class="invalid-feedback" role="alert">
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="p-field">
-                    <label for="email">Matrícula:</label>
+                    <label for="email">Matrícula*:</label>
                     <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required>
                     @error('matricula')
                     <span class="invalid-feedback" role="alert">

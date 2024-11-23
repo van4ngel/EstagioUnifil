@@ -14,7 +14,7 @@
                 @csrf
 
                 <div class="p-field">
-                    <label for="tema">Tema da Tarefa:</label>
+                    <label for="tema">Tema da Tarefa*:</label>
                     <input 
                         type="text" 
                         id="tema" 
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="p-field">
-                    <label for="estagio">Estágio do TCC:</label>
+                    <label for="estagio">Estágio do TCC*:</label>
                     <select 
                         id="estagio" 
                         class="form-control @error('estagio') is-invalid @enderror" 
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="p-field">
-    <label for="data_entrega">Data de Entrega:</label>
+    <label for="data_entrega">Data de Entrega*:</label>
     <input 
         type="date" 
         id="data_entrega" 
@@ -69,7 +69,7 @@
 </div>
 
                 <div class="p-field">
-                    <label for="link">Link do classroom:</label>
+                    <label for="link">Link do classroom*:</label>
                     <input 
                         type="url" 
                         id="link" 

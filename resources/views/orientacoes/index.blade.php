@@ -35,10 +35,15 @@
                     <td>{{ $orientacao->motivo_nao_orientacao }}</td>
                     <td>{{ $orientacao->descricao_orientacao }}</td>
                     <td>{{ \Carbon\Carbon::parse($orientacao->data_orientacao)->format('d/m/Y') }}</td>
+                    <td>
+    <a href="{{ route('orientacoes.edit', $orientacao->id) }}" class="btn btn-warning btn-sm">Editar</a>
+</td>
+
                 </tr>
             @endforeach
         </tbody>
     </table>
+    
 
     <div class="text-center my-4">
         <a href="{{ route('homeorientador') }}" class="btn btn-secondary">Voltar</a>

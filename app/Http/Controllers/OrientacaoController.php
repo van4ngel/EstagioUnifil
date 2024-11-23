@@ -47,6 +47,8 @@ class OrientacaoController extends Controller
     
         // Salvando no banco de dados
         $orientacao->save();
+
+        
     
         return redirect()->route('orientacoes.index')->with('success', 'Orientação registrada com sucesso!');
 
@@ -60,6 +62,39 @@ class OrientacaoController extends Controller
     return view('orientacoes.index', compact('orientacoes'));
 }
 
+    // Método para exibir o formulário de edição
+    public function edit(Orientacao $orientacao)
+    {
+        // Passa a instância da orientação para a view
+        return view('orientacoes.edit', compact('orientacao'));
+    }
     
+
+public function update(Request $request, Orientacao $orientacao)
+{
+    // Validando os dados recebidos
+    $validatedData = $request->validate([
+        'houve_orientacao' => 'required|string',
+        'motivo_nao_orientacao' => 'nullable|string',
+        'descricao_orientacao' => 'required|string',
+        'data_orientacao' => 'required|date',
+    ]);
+
+    // Atualizando os dados da orientação
+    $orientacao->houve_orientacao = $validatedData['houve_orientacao'] === 'sim' ? 1 : 0;
+    $orientacao->motivo_nao_orientacao = isset($validatedData['motivo_nao_orientacao']) 
+        ? $validatedData['motivo_nao_orientacao'] 
+        : null;
+    $orientacao->descricao_orientacao = $validatedData['descricao_orientacao'];
+    $orientacao->data_orientacao = $validatedData['data_orientacao'];
+
+    // Salvando as alterações
+    $orientacao->save();
+
+    // Redireciona de volta com sucesso
+    return redirect()->route('orientacoes.index')->with('success', 'Orientação atualizada com sucesso!');
+}
+
+
     
 }

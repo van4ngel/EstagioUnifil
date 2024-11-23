@@ -13,7 +13,7 @@ class Orientador extends Authenticatable
     protected $table = 'orientadores';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'nome', 'email', 'password',
     ];
 
     protected $hidden = [
@@ -29,4 +29,5 @@ class Orientador extends Authenticatable
     {
         return $this->hasMany(Banca::class);
     }
+    
 }

@@ -71,147 +71,172 @@
 @endsection
 
 <style scoped>
+    /* Container principal centralizado */
     #edit {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100vw;
-        height: 90vh;
-        background-color: #e9ecef; /* Cor de fundo mais suave */
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #ffff, #f4f6f9);
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: 'Arial', sans-serif;
     }
 
+    /* Caixa principal */
     .box {
-        background: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         width: 90%;
         max-width: 600px;
-        padding: 20px;
+        padding: 30px;
+        animation: fadeIn 1s ease-in-out;
     }
 
+    /* Animação de entrada */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-    .header {
-        text-align: center;
-        margin-bottom: 20px;
+    /* Estilo do cabeçalho */
+    .header img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto 20px;
     }
 
     .header h2 {
-        font-size: 28px; /* Aumentado para maior destaque */
+        font-size: 24px;
+        text-align: center;
         color: #333;
+        margin: 0;
+        font-weight: bold;
     }
 
+    /* Formulário */
     .toldo {
         display: flex;
         flex-direction: column;
-        gap: 15px; /* Aumentado para mais espaço entre os campos */
+        gap: 20px;
     }
 
     .p-field {
         display: flex;
         flex-direction: column;
-        margin-bottom: 15px; 
     }
 
     label {
-        margin-bottom: 10px; 
-        font-size: 18px; 
-        color: #333;
+        font-size: 16px;
         font-weight: bold;
+        color: #555;
+        margin-bottom: 8px;
     }
 
     input[type="text"],
     select {
         width: 100%;
-        padding: 14px; 
-        font-size: 18px; 
-        margin-bottom: 10px; 
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ddd;
         border-radius: 8px;
-        border: 1px solid #ccc;  
-        background-color: #f9f9f9;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        background: #f9f9f9;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     input[type="text"]:focus,
     select:focus {
-        border-color: #ff924c;
-        box-shadow: 0 0 10px rgba(255, 146, 72, 0.3);
+        border-color: #f09b39;
+        box-shadow: 0 0 10px rgba(240, 155, 57, 0.5);
         outline: none;
-    }
-
-    .btn-success {
-        padding: 14px 20px; 
-        border: none;
-        border-radius: 8px;
-        font-size: 20px; 
-        cursor: pointer;
-        background-color: #f09b39;  
-        color: white;
-        text-align: center;
-        transition: background-color 0.3s, transform 0.3s;
-    }
-
-    .btn-success:hover {
-        background-color: #f09b39; 
-        transform: translateY(-2px);
-    }
-
-    .custom-btn {
-        display: block;
-        padding: 6px 20px; 
-        border: none;
-        border-radius: 8px;
-        font-size: 18px; 
-        cursor: pointer;
-        text-align: center;
-        background-color: #007bff;
-        color: white;
-        text-decoration: none;
-        transition: background-color 0.3s, transform 0.3s;
-    }
-
-    .custom-btn:hover {
-        background-color: #0056b3;
-        transform: translateY(-2px);
     }
 
     .select-container {
         position: relative;
-        display: inline-block;
-        width: 100%;
-    }
-
-    .select-container select.form-control {
-        width: 100%;
-        padding: 14px 40px 14px 14px; /* Aumentado para maior conforto */
-        font-size: 18px; /* Aumentado para melhor legibilidade */
-        border-radius: 8px;
-        border: 1px solid #ccc; /* Cor de borda mais suave */
-        background-color: #f9f9f9; /* Cor de fundo mais clara */
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        appearance: none;
-        transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .select-container select.form-control:focus {
-        border-color: #ff924c;
-        box-shadow: 0 0 10px rgba(255, 146, 72, 0.3);
-        outline: none;
     }
 
     .select-icon {
         position: absolute;
         top: 50%;
-        right: 12px; /* Ajustado para alinhamento */
+        right: 10px;
         transform: translateY(-50%);
-        font-size: 20px; /* Aumentado para maior visibilidade */
-        color: #333;
+        font-size: 16px;
+        color: #aaa;
         pointer-events: none;
     }
 
     .invalid-feedback {
         color: #e3342f;
+        font-size: 14px;
+    }
+
+    /* Botões */
+    .btn-success {
+        width: 100%;
+        padding: 14px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        background: linear-gradient(135deg, #f09b39, #d87a31);
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-success:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .custom-btn {
+        display: block;
+        padding: 12px;
+        text-align: center;
         font-size: 16px;
-        margin-top: 5px;
+        color: #fff;
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        border-radius: 8px;
+        text-decoration: none;
+        margin-top: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .custom-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .box {
+            width: 95%;
+            padding: 20px;
+        }
+
+        .header h2 {
+            font-size: 20px;
+        }
+
+        input[type="text"],
+        select {
+            font-size: 14px;
+        }
+
+        .btn-success,
+        .custom-btn {
+            font-size: 14px;
+        }
     }
 </style>
+

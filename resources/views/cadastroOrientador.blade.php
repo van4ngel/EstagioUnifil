@@ -16,29 +16,38 @@
                     <!-- Campo Matrícula -->
                     <label for="email">Matrícula:</label>
                     <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus>
+                    
+                  
+                    @if ($errors->has('email') && $errors->first('email') == 'validation.exists')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>Matrícula não cadastrada.</strong>  <!-- Mensagem personalizada -->
+                        </span>
+                    @endif
+
+                    <!-- Exibir outras mensagens de erro de validação se ocorrerem -->
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
                 </div>
-             <!-- Campo Senha -->
-<div class="p-field">
-    <label for="password">Senha:</label>
-    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
-    @error('password')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-</div>
 
-<!-- Campo Confirmação de Senha -->
-<div class="p-field">
-    <label for="password-confirm">Confirme a Senha:</label>
-    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-</div>
+                <!-- Campo Senha -->
+                <div class="p-field">
+                    <label for="password">Senha:</label>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                    <strong>Minimo de 3 digitos.</strong> 
+                    </span>
+                    @enderror
+                </div>
 
+                <!-- Campo Confirmação de Senha -->
+                <div class="p-field">
+                    <label for="password-confirm">Confirme a Senha:</label>
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                </div>
 
                 <!-- Botão de Registro -->
                 <div class="p-field">
@@ -51,6 +60,8 @@
     </div>
 </div>
 @endsection
+
+
 
 <style scoped>
 #register {

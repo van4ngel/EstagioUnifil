@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="form-container">
+<title>Inserir Notas</title>
+
     <h1 class="form-heading">Adicionar Nota à Banca</h1>
 
     <form action="{{ route('notas.store') }}" method="POST" class="note-form">
@@ -9,7 +11,7 @@
         <input type="hidden" name="banca_id" value="{{ $banca->id }}">
 
         <div class="input-group">
-            <label for="orientador_id">Selecione o Orientador</label>
+            <label for="orientador_id">Selecione o Orientador*</label>
             <select name="orientador_id" required class="input-select">
                 <option value="">Escolha um orientador</option>
                 @foreach($orientadores as $orientador)
@@ -24,12 +26,12 @@
         </div>
 
         <div class="input-group">
-            <label for="nota_apresentacao">Nota de Apresentação</label>
+            <label for="nota_apresentacao">Nota de Apresentação*</label>
             <input type="number" name="nota_apresentacao" class="input-field" required min="0" max="10" placeholder="0 a 10">
         </div>
 
         <div class="input-group">
-            <label for="nota_relatorio">Nota de Relatório</label>
+            <label for="nota_relatorio">Nota de Relatório*</label>
             <input type="number" name="nota_relatorio" class="input-field" required min="0" max="10" placeholder="0 a 10">
         </div>
 

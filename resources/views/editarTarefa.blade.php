@@ -32,19 +32,25 @@
 
                 <div class="p-field">
                     <label for="estagio">Estágio:</label>
-                    <input 
-                        type="text" 
-                        id="estagio" 
-                        class="form-control @error('estagio') is-invalid @enderror" 
-                        name="estagio" 
-                        value="{{ old('estagio', $tarefa->estagio) }}" 
-                        required
-                    >
-                    @error('estagio')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                    <select 
+    id="estagio" 
+    class="form-control @error('estagio') is-invalid @enderror" 
+    name="estagio" 
+    required
+>
+    <option value="1" {{ old('estagio', $tarefa->estagio) == 1 ? 'selected' : '' }}>1</option>
+    <option value="2" {{ old('estagio', $tarefa->estagio) == 2 ? 'selected' : '' }}>2</option>
+    <option value="3" {{ old('estagio', $tarefa->estagio) == 3 ? 'selected' : '' }}>3</option>
+    <option value="4" {{ old('estagio', $tarefa->estagio) == 4 ? 'selected' : '' }}>4</option>
+</select>
+
+@error('estagio')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+@enderror
+
+
                 </div>
 
                 <div class="p-field">
@@ -95,122 +101,171 @@
 @endsection
 
 <style scoped>
-    #edit {
+   #edit {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100vw;
         height: 100vh;
-        background-color: #f8f9fa; /* Cor de fundo */
+        margin: 0;
+        background: linear-gradient(135deg, #ffff, #f4f6f9);
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: 'Arial', sans-serif;
     }
 
+    /* Caixa principal */
     .box {
-        background: #ffffff;
-        border-radius: 12px; /* Aumentado para maior suavidade */
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 700px; /* Aumentado para mais espaço */
-        padding: 30px; /* Aumentado para mais conforto */
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 600px;
+        padding: 30px;
+        animation: fadeIn 1s ease-in-out;
     }
 
-    .header {
-        text-align: center;
-        margin-bottom: 30px; /* Aumentado para mais espaço */
+    /* Animação de entrada */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
+    /* Estilo do cabeçalho */
     .header img {
-        max-width: 100%; /* Garantir que a imagem não ultrapasse os limites do contêiner */
+        max-width: 100%;
         height: auto;
+        display: block;
+        margin: 0 auto 20px;
     }
 
-    .title {
-        font-size: 28px; /* Aumentado para maior destaque */
-        color: #333;
+    .header h2 {
+        font-size: 24px;
         text-align: center;
-        margin-bottom: 20px; /* Espaço abaixo do título */
+        color: #333;
+        margin: 0;
+        font-weight: bold;
     }
 
+    /* Formulário */
     .toldo {
         display: flex;
         flex-direction: column;
-        gap: 20px; /* Aumentado para mais espaço entre os campos */
+        gap: 20px;
     }
 
     .p-field {
         display: flex;
         flex-direction: column;
-        margin-bottom: 20px; /* Aumentado para mais espaço entre os campos */
     }
 
     label {
-        margin-bottom: 10px; /* Aumentado para mais espaço */
-        font-size: 18px; /* Aumentado para melhor legibilidade */
-        color: #333;
+        font-size: 16px;
         font-weight: bold;
+        color: #555;
+        margin-bottom: 8px;
     }
 
     input[type="text"],
-    input[type="date"],
-    input[type="url"],
     select {
         width: 100%;
-        padding: 14px; /* Aumentado para mais conforto */
-        font-size: 18px; /* Aumentado para melhor legibilidade */
-        margin-bottom: 10px; /* Aumentado para mais espaço */
-        border-radius: 8px;
+        padding: 12px;
+        font-size: 16px;
         border: 1px solid #ddd;
-        background-color: #f9f9f9; /* Cor de fundo mais clara */
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        background: #f9f9f9;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     input[type="text"]:focus,
-    input[type="date"]:focus,
-    input[type="url"]:focus,
     select:focus {
-        border-color: #ff924c;
-        box-shadow: 0 0 10px rgba(255, 146, 72, 0.3);
+        border-color: #f09b39;
+        box-shadow: 0 0 10px rgba(240, 155, 57, 0.5);
         outline: none;
     }
 
-    .btn-success,
-    .btn-secondary {
-        display: block;
-        width: 100%;
-        padding: 14px; /* Aumentado para maior conforto */
-        border: none;
-        border-radius: 8px;
-        font-size: 22px; /* Aumentado para maior destaque */
-        cursor: pointer;
-        text-align: center;
-        transition: background-color 0.3s, transform 0.3s;
-        margin-top: 10px; /* Espaço entre os botões */
+    .select-container {
+        position: relative;
     }
 
-    .btn-success {
-        background-color: #f09b39; /* Cor do botão */
-        color: white;
-    }
-
-    .btn-success:hover {
-        background-color: #d88b29; /* Cor mais escura para hover */
-        transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-        background-color: #007bff;
-        color: white;
-        margin-top: 20px; /* Mais espaço antes do botão secundário */
-    }
-
-    .btn-secondary:hover {
-        background-color: #0056b3;
-        transform: translateY(-2px);
+    .select-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: #aaa;
+        pointer-events: none;
     }
 
     .invalid-feedback {
         color: #e3342f;
+        font-size: 14px;
+    }
+
+    /* Botões */
+    .btn-success {
+        width: 100%;
+        padding: 14px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        background: linear-gradient(135deg, #f09b39, #d87a31);
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-success:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .custom-btn {
+        display: block;
+        padding: 12px;
+        text-align: center;
         font-size: 16px;
-        margin-top: 5px;
+        color: #fff;
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        border-radius: 8px;
+        text-decoration: none;
+        margin-top: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .custom-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .box {
+            width: 95%;
+            padding: 20px;
+        }
+
+        .header h2 {
+            font-size: 20px;
+        }
+
+        input[type="text"],
+        select {
+            font-size: 14px;
+        }
+
+        .btn-success,
+        .custom-btn {
+            font-size: 14px;
+        }
     }
 </style>
+

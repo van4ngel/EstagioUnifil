@@ -19,7 +19,7 @@
                         <tr>
                             <th>Dia da banca</th>
                             <th>Aluno</th>
-                            <th>Avaliadores</th>
+                            <th>Orientador</th>
                             <th>Data de Criação</th>
                             <th>Ações</th>
                         </tr>
@@ -29,7 +29,7 @@
                             <tr>
                                 <td>{{ \Carbon\Carbon::parse($banca->data_banca)->format('d/m/Y') }}</td>
                                 <td>{{ $banca->aluno->nome }}</td>
-                                <td>{{ $banca->orientador->nome }}</td>
+                                <td>{{ $banca->orientador ? $banca->orientador->nome : 'Orientador não disponível' }}</td>
                                 <td>{{ \Carbon\Carbon::parse($banca->created_at)->format('d/m/Y') }}</td>
                                 <td>
                                     <a href="{{ route('bancas.edit', $banca->id) }}" class="btn btn-warning">Modificar</a>
@@ -48,8 +48,10 @@
 
                 <div class="actions">
                     <a href="{{ route('registerBanca') }}" class="btn btn-primary">Adicionar Banca</a>
+                 
                     <a href="{{ route('pagina_inicial') }}" class="btn btn-secondary">Voltar</a>
                 </div>
+               
             </form>
         </div>
     </div>

@@ -85,23 +85,55 @@ class NotaController extends Controller
         return view('notas.index', compact('notas', 'mediaGeralBanca', 'bancaId'));
     }
     
-  public function listarNotas()
+    public function listarNotas()
+    {
+        $notas = Nota::with(['orientador', 'banca', 'banca.aluno'])->get(); // Carrega também o aluno associado à banca
+    
+        // Agrupando as notas por banca
+        $notasAgrupadas = $notas->groupBy('banca_id')->map(function ($grupo) {
+            return [
+                'banca' => $grupo->first()->banca,
+                'aluno' => $grupo->first()->banca->aluno, // Acesse o aluno da banca
+                'notas' => $grupo, // Inclui todas as notas associadas à banca
+                'media_geral' => $grupo->avg(function ($item) {
+                    return ($item->nota_orientacao + $item->nota_apresentacao + $item->nota_relatorio) / 3; // Calcule a média geral
+                }),
+            ];
+        })->values(); // Usado para redefinir as chaves do array
+    
+        return view('notas.listar', compact('notasAgrupadas')); // Envie a variável para a view
+    }
+    
+
+public function edit(Nota $nota)
 {
-    $notas = Nota::with(['orientador', 'banca', 'banca.aluno'])->get(); // Carrega também o aluno associado à banca
-
-    // Agrupando as notas por banca
-    $notasAgrupadas = $notas->groupBy('banca_id')->map(function ($grupo) {
-        return [
-            'banca' => $grupo->first()->banca,
-            'aluno' => $grupo->first()->banca->aluno, // Acesse o aluno da banca
-            'orientador' => $grupo->first()->orientador, // Acesse o orientador do primeiro registro do grupo
-            'media_geral' => $grupo->avg(function ($item) {
-                return ($item->nota_orientacao + $item->nota_apresentacao + $item->nota_relatorio) / 3; // Calcule a média geral
-            }),
-        ];
-    })->values(); // Usado para redefinir as chaves do array
-
-    return view('notas.listar', compact('notasAgrupadas')); // Envie a variável para a view
+    $banca = $nota->banca; // Banca associada à nota
+    return view('notas.edit', compact('nota', 'banca'));
 }
+
+
+public function update(Request $request, Nota $nota)
+{
+    $request->validate([
+        'nota_orientacao' => 'nullable|numeric|min:0|max:10',
+        'nota_apresentacao' => 'nullable|numeric|min:0|max:10',
+        'nota_relatorio' => 'nullable|numeric|min:0|max:10',
+    ]);
+
+    $nota->update($request->only(['nota_orientacao', 'nota_apresentacao', 'nota_relatorio']));
+
+    // Recalcula a média
+    $notas = [
+        $nota->nota_orientacao,
+        $nota->nota_apresentacao,
+        $nota->nota_relatorio,
+    ];
+    $nota->media = array_sum(array_filter($notas)) / max(1, count(array_filter($notas)));
+    $nota->save();
+
+    return redirect()->route('notas.listar', $nota->banca_id)->with('success', 'Nota atualizada com sucesso!');
+}
+
+
 
 }
